@@ -17,5 +17,8 @@ footer{
     justify-content: center;
 }
 main{
-
+    width: 80%;
+}
+.logo{
+    size: 30px;
 }
