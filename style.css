@@ -1,15 +1,18 @@
 body{
     background-color: #50688a;
     color:#fff2ef;
-    padding:0px;
+    padding:0;
+    margin:0;
 }
 header{
     background-color: #f7a5a5;
     display: flex;
-    margin:0xp;
+    margin:0;
+    justify-content: space-between;
 }
 nav{
-
+    display:flex;
+    
 }
 footer{
     display:flex;
@@ -17,8 +20,8 @@ footer{
     justify-content: center;
 }
 main{
-    width: 80%;
+    height: 80%;
 }
 .logo{
-    size: 30px;
+    size: 60px;
 }
