@@ -25,6 +25,7 @@ main{
 }
 .logo{
     size: 60px;
+    background-color: aqua;
 }
 .pageLink{
     padding:10px;
