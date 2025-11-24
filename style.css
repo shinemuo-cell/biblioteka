@@ -24,8 +24,8 @@ main{
     height: 80%;
 }
 .logo{
-    size: 60px;
-    background-color: aqua;
+    size: 80px;
+    justify-content: center;
 }
 .pageLink{
     padding:10px;
