@@ -6,6 +6,7 @@ body{
 header{
     background-color: #f7a5a5;
     display: flex;
+    margin:0xp;
 }
 nav{
 
@@ -16,5 +17,5 @@ footer{
     justify-content: center;
 }
 main{
-    
+
 }
