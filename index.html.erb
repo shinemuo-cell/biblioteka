@@ -32,16 +32,27 @@
                         <th>Kiekis</th>
                     </thead>
                     <tbody>
-                        <% 
-                        books.forEach(book => { %>
+                        <%
+                        if(booksData.lenght>0)
+                        {
+                            books.forEach(book => { 
+                        %>
                         <tr>
-                        <td><%= book.name %></td>
-                        <td><%= book.author %></td>
-                        <td><%= book.metai %></td>
-                        <td><%= book.isbn %></td>
-                        <td><%= book.kiekis %></td>
+                            <td><%= book.name %></td>
+                            <td><%= book.author %></td>
+                            <td><%= book.metai %></td>
+                            <td><%= book.isbn %></td>
+                            <td><%= book.kiekis %></td>
                         </tr>
-                        <% }) 
+                        <% });
+                        } else
+                        {
+                        %>
+                        <tr>
+                            <td colspan="5">Nera duomenu</td>
+                        </tr>
+                        <%
+                          }
                         %>
                     </tbody>
                 </table>
