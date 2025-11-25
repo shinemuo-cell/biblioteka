@@ -3,7 +3,7 @@ const express = require('express');
 //sujungiama
 const app = express();
 const db = mysql.createConnection({
-    hots: 'localhost',
+    host: 'localhost',
     user: 'user',
     password: 'password',
     database: 'mano_db'
