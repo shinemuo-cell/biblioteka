@@ -21,7 +21,7 @@
         </header>
         <main>
             <h1>Knygos</h1>
-            <button type="button"></button>
+            <button type="button">Pridėti knygą</button>
             <div class="container">
                 <table class="table">
                     <thead>
@@ -37,6 +37,9 @@
                         <tr>
                         <td><%= book.name %></td>
                         <td><%= book.author %></td>
+                        <td><%= book.metai %></td>
+                        <td><%= book.isbn %></td>
+                        <td><%= book.kiekis %></td>
                         </tr>
                         <% }) 
                         %>
