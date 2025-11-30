@@ -20,3 +20,6 @@ function newBookSubmit(){
 function addBookQuantity(){
     
 }
+function addBookForm(){
+    
+}

@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,8 +25,8 @@
         </header>
         <main>
             <h1>Knygos</h1>
-            <button type="button" onclick="addBook()">Nauja knyga</button>
-            <button type="button" onclick="addBook()">Nauja knyga</button>
+            <button type="button" onclick="newBookOpenForm()">Pridėti naują knygą</button>
+            <button type="button" onclick="addBookForm()">Papildyti turimą</button>
             <div class="container">
                 <table class="table">
                     <thead>
@@ -35,14 +39,14 @@
                     <tbody><!-- svetaine programuojama html bet reikalingas php todel failas php o kodas html-->
                         <?php
                         if(empty($allBooks)){
-                            echo "<td>colspan=2</td>"
+                            echo "<td colspan=5>Duomenu nerasta</td>";
                         }else{
                             foreach ($allBooks as $book) {
-                                echo "<td>".htmlspecialchars($row["name"])."</td>"
-                                echo "<td>".htmlspecialchars($row["author"])."</td>"
-                                echo "<td>".htmlspecialchars($row["isbn"])."</td>"
-                                echo "<td>".htmlspecialchars($row["y"])."</td>"
-                                echo "<td>".htmlspecialchars($row["quantity"])."</td>"
+                                echo "<td>".htmlspecialchars($row["name"])."</td>";
+                                echo "<td>".htmlspecialchars($row["author"])."</td>";
+                                echo "<td>".htmlspecialchars($row["isbn"])."</td>";
+                                echo "<td>".htmlspecialchars($row["y"])."</td>";
+                                echo "<td>".htmlspecialchars($row["quantity"])."</td>";
                             }
                         }
                         ?>
