@@ -68,7 +68,7 @@
                     <input type="number" id="year" name="year"><br>
                     <label>Kiekis</label>
                     <input type="text" id="quantity" name="quantity"><br>
-                    <button type="submit">Pridėti</button>
+                    <button onclick="newBookSubmit()">Pridėti</button>
                     <button onclick="newBookCloseForm()">Uždaryti</button>
                 </div>
             </form>
