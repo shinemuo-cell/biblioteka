@@ -14,6 +14,6 @@ try{
     $pdo=null;
     $stmt=null;
 
-}catch(PDOExeption $e){
+}catch(PDOException $e){
     die("Query failed: " . $e->getMessage());
 }
