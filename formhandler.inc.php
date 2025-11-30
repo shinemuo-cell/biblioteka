@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":author", $author);
         $stmt->bindParam(":isbn", $isbn);
-        $stmt->bindParam(":y", $year);
+        $stmt->bindParam(":y", $y);
         $stmt->bindParam(":quantity", $quantity);
         $stmt->execute();
         $pdo=null;

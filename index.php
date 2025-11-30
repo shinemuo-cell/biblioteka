@@ -39,14 +39,16 @@
                     <tbody><!-- svetaine programuojama html bet reikalingas php todel failas php o kodas html-->
                         <?php
                         if(empty($allBooks)){
-                            echo "<td colspan=5>Duomenu nerasta</td>";
+                            echo "<tr><td colspan=5>Duomenu nerasta</td></tr>";
                         }else{
                             foreach ($allBooks as $book) {
-                                echo "<td>".htmlspecialchars($row["name"])."</td>";
-                                echo "<td>".htmlspecialchars($row["author"])."</td>";
-                                echo "<td>".htmlspecialchars($row["isbn"])."</td>";
-                                echo "<td>".htmlspecialchars($row["y"])."</td>";
-                                echo "<td>".htmlspecialchars($row["quantity"])."</td>";
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($book["name"]) . "</td>";
+                                echo "<td>" . htmlspecialchars($book["author"]) . "</td>";
+                                echo "<td>" . htmlspecialchars($book["y"]) . "</td>";
+                                echo "<td>" . htmlspecialchars($book["isbn"]) . "</td>";
+                                echo "<td>" . htmlspecialchars($book["quantity"]) . "</td>";
+                                echo "</tr>";
                             }
                         }
                         ?>
@@ -66,7 +68,7 @@
                     <input type="number" id="year" name="year"><br>
                     <label>Kiekis</label>
                     <input type="text" id="quantity" name="quantity"><br>
-                    <button onclick="newBookSubmit()">Pridėti</button>
+                    <button type="submit">Pridėti</button>
                     <button onclick="newBookCloseForm()">Uždaryti</button>
                 </div>
             </form>
