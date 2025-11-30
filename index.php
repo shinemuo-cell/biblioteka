@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Skaitytojai</title>
+        <title>Knygos</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
         rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
@@ -32,8 +32,20 @@
                         <th>ISBN</th>
                         <th>Kiekis</th>
                     </thead>
-                    <tbody>
-                        
+                    <tbody><!-- svetaine programuojama html bet reikalingas php todel failas php o kodas html-->
+                        <?php
+                        if(empty($allBooks)){
+                            echo "<td>colspan=2</td>"
+                        }else{
+                            foreach ($allBooks as $book) {
+                                echo "<td>".htmlspecialchars($row["name"])."</td>"
+                                echo "<td>".htmlspecialchars($row["author"])."</td>"
+                                echo "<td>".htmlspecialchars($row["isbn"])."</td>"
+                                echo "<td>".htmlspecialchars($row["y"])."</td>"
+                                echo "<td>".htmlspecialchars($row["quantity"])."</td>"
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
