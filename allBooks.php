@@ -13,7 +13,6 @@ try{
     $allBooks = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $pdo=null;
     $stmt=null;
-    //duomenys perduodami taip, kad negalima butu atlikti injection atakos
 
 }catch(PDOExeption $e){
     die("Query failed: " . $e->getMessage());

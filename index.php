@@ -53,7 +53,7 @@
                     </tbody>
                 </table>
             </div>
-            <form id="newBook" class="newBookStyle" action="includer/formhandler.inc.php" method="post">
+            <form id="newBook" class="newBookStyle" action="formhandler.inc.php" method="post">
                 <div class="formContent">
                     <h3>Knygos informacija</h3>
                     <label>Knygos pavadinimas</label>
@@ -74,8 +74,7 @@
         <footer>
             Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.
         </footer>
-        <script>
-        
+        <script src="script.js">
         </script>
     </body>
 </html>

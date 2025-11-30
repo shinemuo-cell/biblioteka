@@ -2,15 +2,15 @@
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $name = $_POST["name"];
     $author = $_POST["author"];
-    $year = $_POST["year"];
+    $y = $_POST["year"];
     $isbn = $_POST["isbn"];
     $quantity = $_POST["quantity"];
     //gaunami duomenys is lenteles
 
     try{
-        require_once "db.inc.pdp";//kodo integravimas
+        require_once "db.inc.php";//kodo integravimas
         $query = "INSERT INTO books (name, author, isbn, y, quantity) 
-        VALUES(:name, :author, :isbn, :year, :quantity);";// ^ stulpelio pavadinimas, sql komanda
+        VALUES(:name, :author, :isbn, :y, :quantity);";// ^ stulpelio pavadinimas, sql komanda
         $stmt = $pdo->prepare($query);
 
         $stmt->bindParam(":name", $name);
@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $stmt=null;
         //duomenys perduodami taip, kad negalima butu atlikti injection atakos
 
-    }catch(PDOExeption $e){
+    }catch(PDOException $e){
         die("Query failed: " . $e->getMessage());
     }
 }

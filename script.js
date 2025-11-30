@@ -8,11 +8,11 @@ function newBookCloseForm(){
 //forma paslepiama
 
 function newBookSubmit(){
-    let name = document.getElementById("name").value;
-    let author = document.getElementById("author").value;
-    let isbn = document.getElementById("isbn").value;
-    let year = document.getElementById("year").value;
-    let quantity = document.getElementById("quantity").value;
+    // let name = document.getElementById("name").value;
+    // let author = document.getElementById("author").value;
+    // let isbn = document.getElementById("isbn").value;
+    // let year = document.getElementById("year").value;
+    // let quantity = document.getElementById("quantity").value;
 }
 //gaunami formos duomenys
 
