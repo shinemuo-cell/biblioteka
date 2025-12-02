@@ -62,9 +62,9 @@ include_once '';
                     </tbody>
                 </table>
             </div>
-            <div>
+            <div class="newBookStyle" >
                 <button type="close" onclick="newBookCloseForm()">Uždaryti langą</button>
-                <form id="newBook" class="newBookStyle" action="insertBook.php" method="POST">
+                <form id="newBook" action="insertBook.php" method="POST">
                     <div class="formContent">
                         <h3>Knygos informacija</h3>
                         <label>Knygos pavadinimas</label><br>
