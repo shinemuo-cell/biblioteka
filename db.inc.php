@@ -1,18 +1,10 @@
 <?php
 #kodas skirtas prijungti db prie svetaines (naudojau xampp)
 
-$dsn = "mysql:host=localhost;dbname=library";
-#host nurodo kur pasiekti svetaine (standartinis, keistis neturetu)
-#dbname db pavadinimas, as pasivadinau library, pas jus gali buti kitaip (jei ka pasikeiskit i savo)
+$dbServername="localhost";
+$dbUsername="root";
+$dbPassword="";
+$dbName="loginsystem";
+#duomenys turi buti nustatyti default, taip kad keisti nereikia
 
-$dbusername = "root";
-$dbpassword = "";
-#standartiniai dauomenys (pas visus default vienodai nebent pasikeitet arba naudojat mac)
-
-try{
-    $pdo = new PDO($dsn, $dbusername, $dbpassword);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}catch(PDOException $e){
-    die ("Connection failed: " . $e->getMessage());
-}
-
+$conn=mysqli_connect($dbServername,$dbUsername,$dbPassword,$dbName);

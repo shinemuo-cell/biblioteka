@@ -29,7 +29,7 @@
             <button type="button" onclick="addBookForm()">Papildyti turimą</button>
             <div class="container">
                 <table class="table">
-                    <thead>
+                    <thead class="table-light">
                         <th>Pavadinimas</th>
                         <th>Autorius</th>
                         <th>Leidimo metai</th>
@@ -38,19 +38,7 @@
                     </thead>
                     <tbody><!-- svetaine programuojama html bet reikalingas php todel failas php o kodas html-->
                         <?php
-                        if(empty($allBooks)){
-                            echo "<tr><td colspan=5>Duomenu nerasta</td></tr>";
-                        }else{
-                            foreach ($allBooks as $book) {
-                                echo "<tr>";
-                                echo "<td>" . htmlspecialchars($book["name"]) . "</td>";
-                                echo "<td>" . htmlspecialchars($book["author"]) . "</td>";
-                                echo "<td>" . htmlspecialchars($book["y"]) . "</td>";
-                                echo "<td>" . htmlspecialchars($book["isbn"]) . "</td>";
-                                echo "<td>" . htmlspecialchars($book["quantity"]) . "</td>";
-                                echo "</tr>";
-                            }
-                        }
+                        
                         ?>
                     </tbody>
                 </table>
