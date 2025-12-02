@@ -25,8 +25,10 @@ include_once 'db.inc.php';
         </header>
         <main>
             <h1>Knygos</h1>
-            <button type="button" onclick="newBookOpenForm()">Pridėti naują knygą</button>
-            <button type="button" onclick="addBookForm()">Papildyti turimą</button>
+            <div class="buttonContainer">
+                <button type="button" onclick="newBookOpenForm()">Pridėti naują knygą</button>
+                <button type="button" onclick="addBookForm()">Papildyti turimą</button>
+            </div>
             <div class="container">
                 <table class="table">
                     <thead class="table-light">
@@ -51,6 +53,8 @@ include_once 'db.inc.php';
                                 <td>". $row["quantity"]."</td>
                                 </tr>";
                             }
+                        }else{
+                            echo "<tr><td colspan=5>Duomenų nėra</td></tr>";
                         }
                         
                         ?>
@@ -70,8 +74,10 @@ include_once 'db.inc.php';
                     <input type="number" id="year" name="year"><br>
                     <label>Kiekis</label><br>
                     <input type="text" id="quantity" name="quantity"><br>
-                    <button onclick="newBookSubmit()">Pridėti</button>
-                    <button onclick="newBookCloseForm()">Uždaryti</button>
+                    <div class="buttonContainer">
+                    <button onclick="newBookSubmit()" >Pridėti</button><br>
+                    <button onclick="newBookCloseForm()" >Uždaryti</button><br>
+                    </div>
                 </div>
             </form>
         </main>

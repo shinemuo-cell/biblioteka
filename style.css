@@ -22,6 +22,9 @@ footer{
 }
 main{
     height: 80%;
+    justify-content: center;
+    background-color: #50688a;
+    color:#fff2ef;
 }
 .logo{
     font-size: 30px;
@@ -35,6 +38,9 @@ h1{
     align-items: center;
     justify-content: center;
     padding:10px;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 50px;
 }
 .newBookStyle{
     display: none;
@@ -49,4 +55,24 @@ h1{
     margin: 15% auto;
     width: 300px;
     border-radius: 6px;
+    background-color: #50688a;
+}
+button{
+    width: 250px;
+    border: 0px;
+    background-color: #ffdbb6;
+}
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+    margin-bottom:40px;
+}
+input{
+    width: 250px;
+}
+form{
+    color: #fff2ef;
 }
