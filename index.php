@@ -1,5 +1,5 @@
 <?php
-
+include_once 'db.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,17 @@
                     </thead>
                     <tbody><!-- svetaine programuojama html bet reikalingas php todel failas php o kodas html-->
                         <?php
-                        
+                        $sql="SELECT * FROM books;";
+                        $result=mysqli_query($conn,$sql);
+                        while($row=$result->fetch_assoc()){
+                            echo "<tr>
+                            <td>". $row["name"]."</td>
+                            <td>". $row["author"]."</td>
+                            <td>". $row["y"]."</td>
+                            <td>". $row["isbn"]."</td>
+                            <td>". $row["quantity"]."</td>
+                            </tr>"
+                        }
                         ?>
                     </tbody>
                 </table>
@@ -46,15 +56,15 @@
             <form id="newBook" class="newBookStyle" action="formhandler.inc.php" method="post">
                 <div class="formContent">
                     <h3>Knygos informacija</h3>
-                    <label>Knygos pavadinimas</label>
+                    <label>Knygos pavadinimas</label><br>
                     <input type="text" id="name" name="name"><br>
-                    <label>Autorius</label>
+                    <label>Autorius</label><br>
                     <input type="text" id="author" name="author"><br>
-                    <label>ISBN</label>
+                    <label>ISBN</label><br>
                     <input type="text" id="isbn" name="isbn"><br>
-                    <label>Leidimo metai</label>
+                    <label>Leidimo metai</label><br>
                     <input type="number" id="year" name="year"><br>
-                    <label>Kiekis</label>
+                    <label>Kiekis</label><br>
                     <input type="text" id="quantity" name="quantity"><br>
                     <button onclick="newBookSubmit()">Pridėti</button>
                     <button onclick="newBookCloseForm()">Uždaryti</button>
