@@ -40,15 +40,19 @@ include_once 'db.inc.php';
                         <?php
                         $sql="SELECT * FROM books;";
                         $result=mysqli_query($conn,$sql);
-                        while($row=$result->fetch_assoc()){
-                            echo "<tr>
-                            <td>". $row["name"]."</td>
-                            <td>". $row["author"]."</td>
-                            <td>". $row["y"]."</td>
-                            <td>". $row["isbn"]."</td>
-                            <td>". $row["quantity"]."</td>
-                            </tr>"
+                        $resultCheck = mysqli_num_rows($result);
+                        if($resultCheck>0){
+                            while($row=mysqli_fetch_assoc($result)){
+                                echo "<tr>
+                                <td>". $row["name"]."</td>
+                                <td>". $row["author"]."</td>
+                                <td>". $row["y"]."</td>
+                                <td>". $row["isbn"]."</td>
+                                <td>". $row["quantity"]."</td>
+                                </tr>";
+                            }
                         }
+                        
                         ?>
                     </tbody>
                 </table>

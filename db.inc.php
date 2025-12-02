@@ -3,8 +3,8 @@
 
 $dbServername="localhost";
 $dbUsername="root";
-$dbPassword="";
-$dbName="loginsystem";
+$dbPassword='';
+$dbName="library";//db pavadinimas (pas mane toks)
 #duomenys turi buti nustatyti default, taip kad keisti nereikia
 
 $conn=mysqli_connect($dbServername,$dbUsername,$dbPassword,$dbName);
