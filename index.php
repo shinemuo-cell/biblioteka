@@ -1,6 +1,5 @@
 <?php
 include_once 'db.inc.php';
-include_once '';
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +27,7 @@ include_once '';
             <h1>Knygos</h1>
             <div class="buttonContainer">
                 <button type="button" onclick="newBookOpenForm()">Pridėti naują knygą</button>
-                <button type="button" onclick="addBookForm()">Papildyti turimą</button>
+                <button type="button" onclick="addBookOpenForm()">Papildyti turimą</button>
             </div>
             <div class="container">
                 <table class="table">
@@ -62,9 +61,8 @@ include_once '';
                     </tbody>
                 </table>
             </div>
-            <div class="newBookStyle" >
-                <button type="close" onclick="newBookCloseForm()">Uždaryti langą</button>
-                <form id="newBook" action="insertBook.php" method="POST">
+            <div class="formStyle" id="newBook" >
+                <form action="insertBook.php" method="POST">
                     <div class="formContent">
                         <h3>Knygos informacija</h3>
                         <label>Knygos pavadinimas</label><br>
@@ -77,11 +75,37 @@ include_once '';
                         <input type="number" id="year" name="y"><br>
                         <label>Kiekis</label><br>
                         <input type="text" id="quantity" name="quantity"><br>
-                        <div class="buttonContainer">
                         <button type="submit" name="submit" >Pridėti</button><br>
-                        </div>
                     </div>
                 </form>
+                <!-- <button onclick="newBookCloseForm()">Uždaryti langą</button> -->
+            </div>
+            <div class="formStyle" id="addBook">
+                <form action="addBook.php" mode="POST">
+                    <div class="formContainer">
+                        <label>Pasirinkite knygą</label><br>
+                        <select name="bookNames" id="addBook"><br>
+                            <?php
+                            $sql="SELECT * FROM books;";
+                            $result=mysqli_query($conn,$sql);
+                            $resultCheck = mysqli_num_rows($result);
+                            if($resultCheck>0){
+                                while($row=mysqli_fetch_assoc($result)){
+                                    echo "<option name=" .$row["name"].">
+                                    ".$row["name"]."</option>";
+                                }
+                            }else{
+                                echo "<option value=noBooks>Nera knygu</option>";
+                            }
+                            
+                            ?>
+                        </select>
+                        <label>Įveskite kiekį</label><br>
+                        <input type="text" name="addQuantity"><br>
+                        <button type="submit" name="submit" >Pridėti</button><br>
+                    </div>
+                </form>
+                <button onclick="addBookCoseForm()">Uzdaryti</button>
             </div>
         </main>
         <footer>

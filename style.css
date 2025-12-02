@@ -47,12 +47,13 @@ h1{
 /*#endregion*/
 
 /*#region Formos*/
-.newBookStyle{
+.formStyle{
     display: none;
     position: fixed;
     left: 0; top: 0;
     width: 100%; height: 100%;
     background: rgba(0,0,0,0.5);
+    color: #fff2ef;
 }
 .formContent{
     background: white;
@@ -77,8 +78,5 @@ button{
 }
 input{
     width: 250px;
-}
-form{
-    color: #fff2ef;
 }
 /*#endregion*/

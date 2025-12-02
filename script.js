@@ -7,16 +7,11 @@ function newBookCloseForm(){
 }
 //forma paslepiama
 
-function newBookSubmit(){
-    
-}
-
-
 //cia tas pats tik kita forma (knygos kiekio didinimas)
-function addBookQuantity(){
-    
+function addBookOpenForm(){
+    document.getElementById("addBook").style.display="block";
 }
-function addBookForm(){
-    
+function addBookCloseForm(){
+    document.getElementById("addBook").style.display="none";
 }
 
