@@ -62,25 +62,27 @@ include_once '';
                     </tbody>
                 </table>
             </div>
-            <form id="newBook" class="newBookStyle" action="insertBook.php" method="POST">
-                <div class="formContent">
-                    <h3>Knygos informacija</h3>
-                    <label>Knygos pavadinimas</label><br>
-                    <input type="text" id="name" name="name"><br>
-                    <label>Autorius</label><br>
-                    <input type="text" id="author" name="author"><br>
-                    <label>ISBN</label><br>
-                    <input type="text" id="isbn" name="isbn"><br>
-                    <label>Leidimo metai</label><br>
-                    <input type="number" id="year" name="y"><br>
-                    <label>Kiekis</label><br>
-                    <input type="text" id="quantity" name="quantity"><br>
-                    <div class="buttonContainer">
-                    <button type="submit" name="submit" >Pridėti</button><br>
-                    <button onclick="newBookCloseForm()" >Uždaryti</button><br>
+            <div>
+                <button type="close" onclick="newBookCloseForm()">Uždaryti langą</button>
+                <form id="newBook" class="newBookStyle" action="insertBook.php" method="POST">
+                    <div class="formContent">
+                        <h3>Knygos informacija</h3>
+                        <label>Knygos pavadinimas</label><br>
+                        <input type="text" id="name" name="name"><br>
+                        <label>Autorius</label><br>
+                        <input type="text" id="author" name="author"><br>
+                        <label>ISBN</label><br>
+                        <input type="text" id="isbn" name="isbn"><br>
+                        <label>Leidimo metai</label><br>
+                        <input type="number" id="year" name="y"><br>
+                        <label>Kiekis</label><br>
+                        <input type="text" id="quantity" name="quantity"><br>
+                        <div class="buttonContainer">
+                        <button type="submit" name="submit" >Pridėti</button><br>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </main>
         <footer>
             Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.
