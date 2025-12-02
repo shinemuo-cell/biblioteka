@@ -1,3 +1,5 @@
+
+/*#region Pagrindiniai */
 body{
     background-color: #50688a;
     color:#fff2ef;
@@ -42,6 +44,9 @@ h1{
     font-size: 30px;
     padding-top: 50px;
 }
+/*#endregion*/
+
+/*#region Formos*/
 .newBookStyle{
     display: none;
     position: fixed;
@@ -76,3 +81,4 @@ input{
 form{
     color: #fff2ef;
 }
+/*#endregion*/
