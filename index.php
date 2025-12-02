@@ -1,5 +1,6 @@
 <?php
 include_once 'db.inc.php';
+include_once '';
 ?>
 
 <!DOCTYPE html>
@@ -61,7 +62,7 @@ include_once 'db.inc.php';
                     </tbody>
                 </table>
             </div>
-            <form id="newBook" class="newBookStyle" action="formhandler.inc.php" method="post">
+            <form id="newBook" class="newBookStyle" action="insertBook.php" method="POST">
                 <div class="formContent">
                     <h3>Knygos informacija</h3>
                     <label>Knygos pavadinimas</label><br>
@@ -71,11 +72,11 @@ include_once 'db.inc.php';
                     <label>ISBN</label><br>
                     <input type="text" id="isbn" name="isbn"><br>
                     <label>Leidimo metai</label><br>
-                    <input type="number" id="year" name="year"><br>
+                    <input type="number" id="year" name="y"><br>
                     <label>Kiekis</label><br>
                     <input type="text" id="quantity" name="quantity"><br>
                     <div class="buttonContainer">
-                    <button onclick="newBookSubmit()" >Pridėti</button><br>
+                    <button type="submit" name="submit" >Pridėti</button><br>
                     <button onclick="newBookCloseForm()" >Uždaryti</button><br>
                     </div>
                 </div>
