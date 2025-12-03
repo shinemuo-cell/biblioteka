@@ -115,7 +115,10 @@ $isduotosKnygos = [
                         <button type="submit" name="submit" >Išsaugoti</button><br>
                     </div>
                 </form>
-                <button onclick="editUserCloseForm()">Uždaryti langą</button>
+                <div class="form-buttons-container">
+                    <button onclick="editUserCloseForm()">Uždaryti langą</button>
+                </div>
+         
             </div>
                 
             </div> </main>

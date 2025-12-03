@@ -16,11 +16,11 @@ include_once 'db.inc.php';
     </head>
     <body>
         <header>
-            <b><a class="logo">Bibliotekos valdymo sistema</a></b>
+            <b><a class="logo" href="index.php">Bibliotekos valdymo sistema</a></b>
             <nav>
                 <a class="pageLink" href="books.php">Knygos</a>
                 <a class="pageLink" href="user.php">Paskyra</a> 
-                <a class="pageLink" href="darbuotojai.html">Darbuotojai</a>
+                <a class="pageLink" href="darbuotojai.php">Darbuotojai</a>
                 <a class="pageLink">Atsijungti</a>
             </nav>
         </header>
