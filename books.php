@@ -36,11 +36,13 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee' || $_SESSIO
         </header>
         <main>
             <h1>Knygos</h1>
+            <?php if ($_SESSION["role"] === "admin" || $_SESSION["role"] === "employee"): ?>
+                    
             <div class="buttonContainer">
                 <button type="button" onclick="newBookOpenForm()">Pridėti naują knygą</button>
                 <button type="button" onclick="addBookOpenForm()">Padidinti knygos kiekį</button>
             </div>
-            
+            <?php endif; ?>
             <div class="container mt-4">
                 <table class="table table-striped table-dark">
                     <thead>

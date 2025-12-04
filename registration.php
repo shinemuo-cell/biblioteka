@@ -40,10 +40,10 @@ include_once 'db.inc.php';
                     <label for="phone" class="form-label">Tel. numeris</label>
                     <input type="number" class="form-control" id="phone" name="phone" required>
                 </div>
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <label for="num" class="form-label">Pazymejimo numeris</label>
                     <input type="number" class="form-control" id="num" required>
-                </div>
+                </div> -->
                 <button type="button" class="btn btn-primary btn-lg" type="submit">Sukurti paskyra</button>
             </form>
         </main>
