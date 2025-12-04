@@ -37,7 +37,7 @@ $isduotosKnygos = [
                 <a class="pageLink" href="books.php">Knygos</a>
                 <a class="pageLink" href="user.php">Paskyra</a> 
                 <a class="pageLink" href="darbuotojai.html">Darbuotojai</a>
-                <a class="pageLink">Atsijungti</a>
+                <a class="pageLink" href="logout.php">Atsijungti</a>
             </nav>
         </header>
         

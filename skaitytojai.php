@@ -28,7 +28,7 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                 <?php if ($_SESSION["role"] === "admin"): ?>
                     <a class="pageLink" href="../darbuotojai.php">Darbuotojai</a>
                 <?php endif; ?>
-                <a class="pageLink">Atsijungti</a>
+                <a class="pageLink" href="logout.php">Atsijungti</a>
             </nav>
         </header>
         <main>

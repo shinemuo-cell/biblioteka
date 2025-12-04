@@ -24,7 +24,7 @@ if ($_SESSION['role'] !== 'admin') {
                 <b><a class="pageLink">Knygos</a></b>
                 <b><a class="pageLink">Skaitytojai</a></b>
                 <b><a class="pageLink">Darbuotojai</a></b>
-                <b><a class="pageLink">Atsijungti</a></b>
+                <b><a class="pageLink" href="logout.php">Atsijungti</a></b>
             </nav>
         </header>
         <main>
