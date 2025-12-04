@@ -82,7 +82,7 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                                         <td><?= htmlspecialchars($book['final_date']) ?></td>
                                         </tr>
                                     <?php endwhile; 
-                                }?>
+                                }else{?> <tr><td colspan=6>Knygu nera</td></tr><?php }?>
                                 </tbody>
                             </table>
                             </div>
