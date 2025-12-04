@@ -1,35 +1,40 @@
 <?php
-// Prisijungimas prie duomenų bazės jos ner da
-include_once 'db.inc.php'; 
-?>
+session_start();
+include 'db.php';
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bibliotekos valdymo sistema</title>
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-        crossorigin="anonymous">
-    </head>
-    <body>
-        <header>
-            <b><a class="logo">Bibliotekos valdymo sistema</a></b>
-            <nav>
-                <a class="pageLink" >Pagrindinis</a>
-                <a class="pageLink" >Prisijungti</a> 
-            </nav>
-        </header>
-        <main>
-            
-        </main>
-        
-        <footer>
-            Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.
-        </footer>
-        <script src="script.js">
-        </script>
-    </body>
-</html>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $role = $_POST['role']; 
+
+    if ($role == 'user') {
+        $sql = "SELECT * FROM user WHERE username = ?";
+    } elseif ($role == 'employee') {
+        $sql = "SELECT * FROM employee WHERE username = ?";
+    } elseif ($role == 'admin') {
+        $sql = "SELECT * FROM admin WHERE username = ?";
+    }
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $account = $result->fetch_assoc();
+
+    if ($account && password_verify($password, $account['password'])) {
+        $_SESSION['username'] = $account['username'];
+        $_SESSION['role']= $role;
+
+        if ($role == 'admin') {
+            header("Location: ../darbuotojai.php");
+        } elseif ($role == 'employee') {
+            header("Location: employee_dashboard.php");
+        } else {
+            header("Location: ../user.php");
+        }
+        exit;
+
+    } else {
+        echo "Neteisingas prisijungimas!";
+    }
+}
+?>
