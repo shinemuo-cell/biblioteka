@@ -1,5 +1,6 @@
 <?php
 include_once 'db.inc.php';
+session_start();
 if ($_SESSION['role'] !== 'admin') {
     die("Neturite prieigos prie šio puslapio!");
 }
