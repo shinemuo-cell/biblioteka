@@ -1,0 +1,95 @@
+<?php
+include_once 'db.inc.php'; 
+if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
+    die("Neturite prieigos prie šio puslapio!");
+}
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bibliotekos valdymo sistema</title>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+        crossorigin="anonymous">
+    </head>
+    <body>
+        <header>
+            <b><a class="logo">Bibliotekos valdymo sistema</a></b>
+            <nav>
+                <a class="pageLink">Knygos</a>
+                <?php if ($_SESSION["role"] === "admin" || $_SESSION["role"] === "employee"): ?>
+                    <a class="pageLink" href="../skaitytojai.php">Skaitytojai</a>
+                <?php endif; ?>
+                <?php if ($_SESSION["role"] === "admin"): ?>
+                    <a class="pageLink" href="../darbuotojai.php">Darbuotojai</a>
+                <?php endif; ?>
+                <a class="pageLink">Atsijungti</a>
+            </nav>
+        </header>
+        <main>
+            <?php
+                $sql = "SELECT * FROM users";
+                $result = mysqli_query($conn, $sql);
+                $resultCheck = mysqli_num_rows($result);
+                if($resultCheck > 0){?>
+                    <div id="accordion">
+                        <?php while($user = $users->fetch_assoc()): ?>
+                        <div class="card">
+                        <div class="card-header" id="heading<?= $user['id'] ?>">
+                            <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?= $user['id'] ?>" aria-expanded="false" aria-controls="collapse<?= $user['id'] ?>">
+                                <?= htmlspecialchars($user['vardas'] . " " . $user['pavarde']) ?>
+                            </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapse<?= $user['id'] ?>" class="collapse" aria-labelledby="heading<?= $user['id'] ?>" data-parent="#accordion">
+                            <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Pavadinimas</th>
+                                    <th scope="col">Autorius</th>
+                                    <th scope="col">Leidimo metai</th>
+                                    <th scope="col">ISBN</th>
+                                    <th scope="col">Atidavimo data</th>
+                                </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                <?php
+                                $books = $mysqli->query("SELECT * FROM taken_books WHERE user_id=" . (int)$user['id']);
+                                $i = 1;
+                                while($book = $books->fetch_assoc()):
+                                ?>
+                                    <tr>
+                                    <th scope="row"><?= $i++ ?></th>
+                                    <td><?= htmlspecialchars($book['name']) ?></td>
+                                    <td><?= htmlspecialchars($book['author']) ?></td>
+                                    <td><?= htmlspecialchars($book['y']) ?></td>
+                                    <td><?= htmlspecialchars($book['isbn']) ?></td>
+                                    <td><?= htmlspecialchars($book['final_date']) ?></td>
+                                    </tr>
+                                <?php endwhile; ?>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                        </div>
+                        <?php endwhile; ?>
+                    </div>
+                <?php} else {
+                     echo "<p>Skaitytoju nera</p>";
+                }
+            ?>
+        </main>
+        <footer>
+            Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.
+        </footer>
+        <script src="script.js">
+        </script>
+    </body>
+</html>
