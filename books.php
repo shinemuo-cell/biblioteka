@@ -1,5 +1,6 @@
 <?php
 include_once 'db.inc.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -18,8 +19,12 @@ include_once 'db.inc.php';
             <b><a class="logo">Bibliotekos valdymo sistema</a></b>
             <nav>
                 <a class="pageLink">Knygos</a>
-                <a class="pageLink">Skaitytojai</a>
-                <a class="pageLink">Darbuotojai</a>
+                <?php if ($_SESSION["role"] === "admin" || $_SESSION["role"] === "employee"): ?>
+                    <a class="pageLink">Skaitytojai</a>
+                <?php endif; ?>
+                <?php if ($_SESSION["role"] === "admin"): ?>
+                    <a class="pageLink">Darbuotojai</a>
+                <?php endif; ?>
                 <a class="pageLink">Atsijungti</a>
             </nav>
         </header>

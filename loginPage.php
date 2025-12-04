@@ -18,8 +18,8 @@ include_once 'db.inc.php';
         <header>
             <b><a class="logo">Bibliotekos valdymo sistema</a></b>
             <nav>
-                <a class="pageLink" >Pagrindinis</a>
-                <a class="pageLink" >Prisijungti</a> 
+                <a class="pageLink" href="index.php">Pagrindinis</a>
+                <a class="pageLink" href="loginPage.php" >Prisijungti</a> 
             </nav>
         </header>
         <main>

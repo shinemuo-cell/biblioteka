@@ -7,11 +7,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $role = $_POST['role']; 
 
-    if ($role == 'user') {
+    if ($role == "user") {
         $sql = "SELECT * FROM user WHERE username = ?";
-    } elseif ($role == 'employee') {
+    } elseif ($role == "employee") {
         $sql = "SELECT * FROM employee WHERE username = ?";
-    } elseif ($role == 'admin') {
+    } elseif ($role == "admin") {
         $sql = "SELECT * FROM admin WHERE username = ?";
     }
     $stmt = $conn->prepare($sql);
@@ -21,9 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $account = $result->fetch_assoc();
 
     if ($account && password_verify($password, $account['password'])) {
-        $_SESSION['id'] = $account['id'];
-        $_SESSION['username'] = $account['username'];
-        $_SESSION['role']= $role;
+        $_SESSION["id"] = $account["id"];
+        $_SESSION["username"] = $account["username"];
+        $_SESSION["role"]= $role;
 
         if ($role == 'admin') {
             header("Location: ../darbuotojai.php");
@@ -37,5 +37,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Neteisingas prisijungimas!";
     }
+
 }
-?>
