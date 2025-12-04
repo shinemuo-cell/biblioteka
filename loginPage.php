@@ -41,6 +41,7 @@ include_once 'db.inc.php';
                     </select>
                     <button type="submit">Prisijungti</button>
                 </form>
+                <a href="registration.php">Sukurti paskyra</a>
             </div>
         </main>
         
