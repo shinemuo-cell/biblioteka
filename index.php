@@ -2,7 +2,7 @@
 // Prisijungimas prie duomenų bazės jos ner da
 include_once 'db.inc.php'; 
 
-setcookie("name", "smilingCatMeme.jpg", time()- 3000);
+setcookie("name", "smilingCatMeme.jpg", time()+ 300);
 ?>
 
 <!DOCTYPE html>
