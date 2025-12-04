@@ -46,7 +46,6 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                             </button>
                             </h5>
                         </div>
-
                         <div id="collapse<?= $user['id'] ?>" class="collapse" aria-labelledby="heading<?= $user['id'] ?>" data-parent="#accordion">
                             <div class="card-body">
                             <table class="table">
@@ -82,7 +81,7 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                         <?php endwhile; ?>
                     </div>
                 <?php} else {
-                     echo "<p>Skaitytoju nera</p>";
+                    echo "<p>Skaitytoju nera</p>";
                 }
             ?>
         </main>
