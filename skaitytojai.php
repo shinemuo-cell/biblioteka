@@ -69,18 +69,20 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                                 <tbody class="table-group-divider">
                                 <?php
                                 $books = $mysqli->query("SELECT * FROM taken_books WHERE user_id=" . (int)$user['id']);
+                                if($books>0){
                                 $i = 1;
-                                while($book = $books->fetch_assoc()):
-                                ?>
-                                    <tr>
-                                    <th scope="row"><?= $i++ ?></th>
-                                    <td><?= htmlspecialchars($book['name']) ?></td>
-                                    <td><?= htmlspecialchars($book['author']) ?></td>
-                                    <td><?= htmlspecialchars($book['y']) ?></td>
-                                    <td><?= htmlspecialchars($book['isbn']) ?></td>
-                                    <td><?= htmlspecialchars($book['final_date']) ?></td>
-                                    </tr>
-                                <?php endwhile; ?>
+                                    while($book = $books->fetch_assoc()):
+                                    ?>
+                                        <tr>
+                                        <th scope="row"><?= $i++ ?></th>
+                                        <td><?= htmlspecialchars($book['name']) ?></td>
+                                        <td><?= htmlspecialchars($book['author']) ?></td>
+                                        <td><?= htmlspecialchars($book['y']) ?></td>
+                                        <td><?= htmlspecialchars($book['isbn']) ?></td>
+                                        <td><?= htmlspecialchars($book['final_date']) ?></td>
+                                        </tr>
+                                    <?php endwhile; 
+                                }?>
                                 </tbody>
                             </table>
                             </div>
