@@ -55,7 +55,7 @@ function editEmployeeOpenForm(employeeId) {
 
     document.getElementById("editEmployee").style.display = "block";
     document.getElementById("edit_id").value = employeeId; // Nustato paslėptą ID lauką
-    
+}
 
 function editEmployeeCloseForm() {
     document.getElementById("editEmployee").style.display = "none";
