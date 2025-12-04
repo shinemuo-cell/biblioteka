@@ -21,9 +21,9 @@ if ($_SESSION['role'] !== 'admin') {
         <header>
             <b><a class="logo">Bibliotekos valdymo sistema</a></b>
             <nav>
-                <b><a class="pageLink">Knygos</a></b>
-                <b><a class="pageLink">Skaitytojai</a></b>
-                <b><a class="pageLink">Darbuotojai</a></b>
+                <b><a class="pageLink" href="books.php">Knygos</a></b>
+                <b><a class="pageLink" href="skaitytojai.php">Skaitytojai</a></b>
+                <b><a class="pageLink" href="darbuotojai.php">Darbuotojai</a></b>
                 <b><a class="pageLink" href="logout.php">Atsijungti</a></b>
             </nav>
         </header>

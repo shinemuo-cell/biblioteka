@@ -21,12 +21,15 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee' || $_SESSIO
         <header>
             <b><a class="logo">Bibliotekos valdymo sistema</a></b>
             <nav>
-                <a class="pageLink">Knygos</a>
+                <a class="pageLink" href="books.php">Knygos</a>
                 <?php if ($_SESSION["role"] === "admin" || $_SESSION["role"] === "employee"): ?>
-                    <a class="pageLink">Skaitytojai</a>
+                    <a class="pageLink" href="skaitytojai.php">Skaitytojai</a>
+                <?php endif; ?>
+                <?php if ($_SESSION["role"] === "user"): ?>
+                    <a class="pageLink" href="user.php">Paskyra</a> 
                 <?php endif; ?>
                 <?php if ($_SESSION["role"] === "admin"): ?>
-                    <a class="pageLink">Darbuotojai</a>
+                    <a class="pageLink" href="darbuotojai.php">Darbuotojai</a>
                 <?php endif; ?>
                 <a class="pageLink" href="logout.php">Atsijungti</a>
             </nav>
