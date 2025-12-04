@@ -42,7 +42,10 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                         <div class="card-header" id="heading<?= $user['id'] ?>">
                             <h5 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?= $user['id'] ?>" aria-expanded="false" aria-controls="collapse<?= $user['id'] ?>">
-                                <?= htmlspecialchars($user['vardas'] . " " . $user['pavarde']) ?>
+                                <p><?= htmlspecialchars($user["name"] . " " . $user["surname"]) ?></p>
+                                <p><?= htmlspecialchars($user["email"])?></p>
+                                <p><?= htmlspecialchars($user["phone"])?></p>
+                                <p><?= htmlspecialchars($user["number"])?></p>
                             </button>
                             </h5>
                         </div>
@@ -51,6 +54,7 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                             <table class="table">
                                 <thead>
                                 <tr>
+                                    <th scope="col">#</th>
                                     <th scope="col">Pavadinimas</th>
                                     <th scope="col">Autorius</th>
                                     <th scope="col">Leidimo metai</th>
