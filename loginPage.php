@@ -1,5 +1,4 @@
 <?php
-// Prisijungimas prie duomenų bazės jos ner da
 include_once 'db.inc.php'; 
 ?>
 
