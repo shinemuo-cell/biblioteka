@@ -45,3 +45,18 @@ h1{
     padding-top: 50px;
 }
 /*#endregion*/
+
+/*#region user*/
+.user-info-section {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 40px;
+    background-color: #50688a;
+}
+.user-info-section p {
+    margin-bottom: 10px;
+}
+.user-info-section .d-flex {
+    justify-content: flex-end;
+}
+/*#endregion*/

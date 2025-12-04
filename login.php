@@ -21,13 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $account = $result->fetch_assoc();
 
     if ($account && password_verify($password, $account['password'])) {
+        $_SESSION['id'] = $account['id'];
         $_SESSION['username'] = $account['username'];
         $_SESSION['role']= $role;
 
         if ($role == 'admin') {
             header("Location: ../darbuotojai.php");
         } elseif ($role == 'employee') {
-            header("Location: .php");
+            header("Location: ../skaitytojai.php");
         } else {
             header("Location: ../user.php");
         }

@@ -29,21 +29,6 @@ $isduotosKnygos = [
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
         rel="stylesheet" crossorigin="anonymous">
-        
-        <style>
-            .user-info-section {
-                padding: 20px;
-                border: 1px solid #ccc;
-                margin-bottom: 40px;
-                background-color: #50688a;
-            }
-            .user-info-section p {
-                margin-bottom: 10px;
-            }
-            .user-info-section .d-flex {
-                justify-content: flex-end;
-            }
-        </style>
     </head>
     <body>
         <header>
