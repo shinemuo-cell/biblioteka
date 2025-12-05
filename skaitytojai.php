@@ -34,8 +34,8 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
         <main>
             <?php
                 $sql = "SELECT * FROM users";
-                $result = mysqli_query($conn, $sql);
-                $resultCheck = mysqli_num_rows($result);
+                $users = mysqli_query($conn, $sql);
+                $resultCheck = mysqli_num_rows($users);
                 if($resultCheck > 0){?>
                     <div id="accordion">
                         <?php while($user = $users->fetch_assoc()): ?>
@@ -92,6 +92,29 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                     echo "<p>Skaitytoju nera</p>";
                 }
             ?>
+            <div class="formStyle" id="userBook">
+                <form action="insertUserBook.php" method="POST">
+                    <div>
+                        <?php
+                        $sql = "SELECT * FROM users";
+                        $result = mysqli_query($conn, $sql);
+                        $resultCheck = mysqli_num_rows($result);
+                        if ($resultCheck>0){
+                            echo "<select class="form-select" aria-label="Default select example">";
+                            echo "<option selected>Vartotojas</option>";
+                            while($user = $result->fetch_assoc()):
+                                echo "<option value= ". $user['id'] . ">". $user['name'] "</option>";
+                            endwhile; 
+                        }?>
+                        <option value="user">Skaitytojas</option>
+                        <option value="employee">Darbuotojas</option>
+                        <option value="admin">Administratorius</option>
+                        </select>
+                        <button type="submit">Prisijungti</button>
+                    </div>
+                </form>
+                <button onclick="newBookCloseForm()">Uždaryti</button>
+            </div>
         </main>
         <footer>
             Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.

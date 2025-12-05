@@ -14,6 +14,13 @@ function addBookOpenForm(){
 function addBookCloseForm(){
     document.getElementById("addBook").style.display="none";
 }
+
+function addBookOpenForm(){
+    document.getElementById("userBook").style.display="block";
+}
+function addBookCloseForm(){
+    document.getElementById("userBook").style.display="none";
+}
 	// Funkcijos vartotojo informacijos keitimo langui
 function editUserOpenForm(){
     document.getElementById("editUser").style.display="block";

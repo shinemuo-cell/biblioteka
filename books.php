@@ -87,7 +87,7 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee' || $_SESSIO
                         <input type="text" name="author" required><br>
                         <label>ISBN</label><br>
                         <input type="text" name="isbn" required><br>
-                        <label>Leidimo metai (Y)</label><br>
+                        <label>Leidimo metai</label><br>
                         <input type="number" name="y" required><br>
                         <label>Kiekis</label><br>
                         <input type="number" name="quantity" required><br>
