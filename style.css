@@ -1,13 +1,10 @@
 
 /*#region Pagrindiniai */
 body{
-    background-color: #50688a;
-    color:#fff2ef;
     padding:0;
     margin:0;
 }
 header{
-    background-color: #f7a5a5;
     display: flex;
     margin:0;
     justify-content: space-between;
@@ -25,8 +22,6 @@ footer{
 main{
     height: 80%;
     justify-content: center;
-    background-color: #50688a;
-    color:#fff2ef;
 }
 .logo{
     font-size: 30px;
@@ -49,9 +44,7 @@ h1{
 /*#region user*/
 .user-info-section {
     padding: 20px;
-    border: 1px solid #ccc;
     margin-bottom: 40px;
-    background-color: #50688a;
 }
 .user-info-section p {
     margin-bottom: 10px;
