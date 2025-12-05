@@ -40,6 +40,14 @@ include_once 'db.inc.php';
                     <label for="phone" class="form-label">Tel. numeris</label>
                     <input type="number" class="form-control" id="phone" name="phone" required>
                 </div>
+                <div class="mb-3">
+                    <label for="loginName" class="form-label">Prisijungimo vardas</label>
+                    <input type="text" class="form-control" id="loginName" name="loginName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="pass" class="form-label">Slaptazodis</label>
+                    <input type="text" class="form-control" id="pass" name="pass" required>
+                </div>
                 <!-- <div class="mb-3">
                     <label for="num" class="form-label">Pazymejimo numeris</label>
                     <input type="number" class="form-control" id="num" required>
