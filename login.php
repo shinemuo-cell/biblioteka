@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
     $account = $result->fetch_assoc();
 
-    if ($account && password_verify($password, $account['password'])) {
+    if ($account && password_verify($password, $account['pass'])) {
         $_SESSION["id"] = $account["id"];
         $_SESSION["username"] = $account["username"];
         $_SESSION["role"]= $role;
