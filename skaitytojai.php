@@ -25,9 +25,6 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                 <?php if ($_SESSION["role"] === "admin" || $_SESSION["role"] === "employee"): ?>
                     <a class="pageLink" href="skaitytojai.php">Skaitytojai</a>
                 <?php endif; ?>
-                <?php if ($_SESSION["role"] === "user"): ?>
-                    <a class="pageLink" href="user.php">Paskyra</a> 
-                <?php endif; ?>
                 <?php if ($_SESSION["role"] === "admin"): ?>
                     <a class="pageLink" href="darbuotojai.php">Darbuotojai</a>
                 <?php endif; ?>
@@ -80,8 +77,9 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                                         <td><?= htmlspecialchars($book['y']) ?></td>
                                         <td><?= htmlspecialchars($book['isbn']) ?></td>
                                         <td><?= htmlspecialchars($book['final_date']) ?></td>
+                                        <td><a href="deteteUserBook.php?id=<?= $user['id'] ?>&book_id=<?= $book['name'] ?>">Grazinta</a></td>
                                         </tr>
-                                    <?php endwhile; 
+                                    <?php endwhile;
                                 }else{?> <tr><td colspan=6>Knygu nera</td></tr><?php }?>
                                 </tbody>
                             </table>
