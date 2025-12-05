@@ -101,16 +101,13 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                         $resultCheck = mysqli_num_rows($result);
                         if ($resultCheck>0){
                             echo "<select class="form-select" aria-label="Default select example">";
-                            echo "<option selected>Vartotojas</option>";
+                            echo "<option selected>Skaitytojas</option>";
                             while($user = $result->fetch_assoc()):
                                 echo "<option value= ". $user['id'] . ">". $user['name'] "</option>";
                             endwhile; 
+                            echo "</select>";
                         }?>
-                        <option value="user">Skaitytojas</option>
-                        <option value="employee">Darbuotojas</option>
-                        <option value="admin">Administratorius</option>
-                        </select>
-                        <button type="submit">Prisijungti</button>
+                        <button type="submit">Isduoti</button>
                     </div>
                 </form>
                 <button onclick="newBookCloseForm()">Uždaryti</button>
