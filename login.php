@@ -3,16 +3,16 @@ session_start();
 include 'db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
+    $loginname = $_POST['loginname'];
     $password = $_POST['password'];
     $role = $_POST['role']; 
 
     if ($role == "user") {
-        $sql = "SELECT * FROM user WHERE username = ?";
+        $sql = "SELECT * FROM user WHERE loginname = ?";
     } elseif ($role == "employee") {
-        $sql = "SELECT * FROM employee WHERE username = ?";
+        $sql = "SELECT * FROM employee WHERE loginname = ?";
     } elseif ($role == "admin") {
-        $sql = "SELECT * FROM admin WHERE username = ?";
+        $sql = "SELECT * FROM admin WHERE loginname = ?";
     }
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($account && password_verify($password, $account['pass'])) {
         $_SESSION["id"] = $account["id"];
-        $_SESSION["username"] = $account["username"];
+        $_SESSION["username"] = $account["loginname"];
         $_SESSION["role"]= $role;
 
         if ($role == 'admin') {
