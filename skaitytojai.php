@@ -94,21 +94,26 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
             ?>
             <div class="formStyle" id="userBook">
                 <form action="insertUserBook.php" method="POST">
-                    <div>
-                        <?php
-                        $sql = "SELECT * FROM users";
-                        $result = mysqli_query($conn, $sql);
-                        $resultCheck = mysqli_num_rows($result);
-                        if ($resultCheck>0){
-                            echo "<select class="form-select" aria-label="Default select example">";
-                            echo "<option selected>Skaitytojas</option>";
-                            while($user = $result->fetch_assoc()):
-                                echo "<option value= ". $user['id'] . ">". $user['name'] "</option>";
-                            endwhile; 
-                            echo "</select>";
-                        }?>
-                        <button type="submit">Isduoti</button>
-                    </div>
+                    <label>Vartotojo pasirikimas</label>
+                    <?php
+                    $sql = "SELECT * FROM users";
+                    $result = mysqli_query($conn, $sql);
+                    $resultCheck = mysqli_num_rows($result);
+                    if ($resultCheck>0){
+                        echo "<select class="form-select" aria-label="Default select example">";
+                        echo "<option selected>Skaitytojas</option>";
+                        while($user = $result->fetch_assoc()):
+                            echo "<option value= ". $user['id'] . ">". $user['name'] "</option>";
+                        endwhile; 
+                        echo "</select>";
+                    }
+                    ?>
+                    <label>Pasirinkite knygą:</label>
+                    <select id="bookSelect" name="book_id">
+                        <option value="">Vartotojo pasirinkimas</option>
+                    </select>
+                    <button type="submit" name="give">Isduoti</button>
+                    
                 </form>
                 <button onclick="newBookCloseForm()">Uždaryti</button>
             </div>

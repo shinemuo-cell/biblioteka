@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db.php';
+include 'db.inc.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $loginname = $_POST['loginname'];
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
 
     } else {
-        echo "Neteisingas prisijungimas!";
+        header("Location: ../loginPage.php");
     }
 
 }

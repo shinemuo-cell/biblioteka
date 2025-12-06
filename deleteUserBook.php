@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+include 'db.inc.php';
 
 $user_id = $_GET['id'];
 $book_name = $_GET['name'];

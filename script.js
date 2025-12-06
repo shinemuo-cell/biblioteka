@@ -68,3 +68,19 @@ function editEmployeeCloseForm() {
     document.getElementById("editEmployee").style.display = "none";
 }
 
+document.getElementById("userSelect").addEventListener("change", function(){
+    let userId = this.value;
+    fetch("getBooks.php?user_id=" + userId)
+        .then(response => response.json())
+        .then(data => {
+            let bookSelect = document.getElementById("bookSelect");
+            bookSelect.innerHTML = "";
+
+            data.forEach(book => {
+                let opt = document.createElement("option");
+                opt.value = book.id;
+                opt.textContent = book.title;
+                bookSelect.appendChild(opt);
+            });
+        });
+});
