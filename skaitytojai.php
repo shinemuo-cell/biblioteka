@@ -100,10 +100,10 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                     $result = mysqli_query($conn, $sql);
                     $resultCheck = mysqli_num_rows($result);
                     if ($resultCheck>0){
-                        echo "<select class="form-select" aria-label="Default select example">";
+                        echo '<select class="form-select" aria-label="Default select example">';
                         echo "<option selected>Skaitytojas</option>";
                         while($user = $result->fetch_assoc()):
-                            echo "<option value= ". $user['id'] . ">". $user['name'] "</option>";
+                            echo '<option value="' . $user['id'] . '">' . $user['name'] . '</option>';
                         endwhile; 
                         echo "</select>";
                     }
