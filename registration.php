@@ -29,37 +29,41 @@ include_once 'db.inc.php';
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="mb-3">
-                    <label for="surname" class="form-label">Pavarde</label>
+                    <label for="surname" class="form-label">Pavardė</label>
                     <input type="text" class="form-control" id="surname" name="surname" required>
                 </div>
                 <div class="mb-3">
-                    <label for="mail" class="form-label">Pastas</label>
+                    <label for="mail" class="form-label">Paštas</label>
                     <input type="email" class="form-control" id="mail" name="email" required>
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Tel. numeris</label>
-                    <input type="number" class="form-control" id="phone" name="phone" required>
+                    <input type="number" class="form-control" id="phone" name="phone" pattern="\+3706[0-9]{7}" placeholder="+37060000000" required>
                 </div>
                 <div class="mb-3">
                     <label for="loginName" class="form-label">Prisijungimo vardas</label>
                     <input type="text" class="form-control" id="loginName" name="loginName" required>
                 </div>
                 <div class="mb-3">
-                    <label for="pass" class="form-label">Slaptazodis</label>
-                    <input type="text" class="form-control" id="pass" name="pass" required>
+                    <label for="pass" class="form-label">Slaptažodis</label>
+                    <div style="display: flex; align-items: center;">
+                        <input type="password" class="form-control" id="pass" name="pass" required>
+                        <button type="button" id="togglePass" class="btn btn-outline-secondary" style="margin-left: 5px;">
+                            Rodyti
+                        </button>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="num" class="form-label">Pazymejimo numeris</label>
+                    <label for="num" class="form-label">Pažymėjimo numeris</label>
                     <input name="num" type="number" class="form-control" id="num" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg" type="submit">Sukurti paskyra</button>
+                <button type="submit" class="btn btn-primary btn-lg" type="submit">Sukurti paskyrą</button>
             </form>
         </main>
         
         <footer>
             Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.
         </footer>
-        <script src="script.js">
-        </script>
+        <script src="script.js"></script>
     </body>
 </html>

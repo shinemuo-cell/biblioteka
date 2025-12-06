@@ -84,3 +84,22 @@ document.getElementById("userSelect").addEventListener("change", function(){
             });
         });
 });
+
+// slaptazodzio matomumas
+document.addEventListener('DOMContentLoaded', () => {
+    const passInput = document.getElementById('pass');
+    const toggleBtn = document.getElementById('togglePass');
+
+    if (passInput && toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                toggleBtn.textContent = 'Hide';
+            } else {
+                passInput.type = 'password';
+                toggleBtn.textContent = 'Show';
+            }
+        });
+    }
+});
+
