@@ -89,7 +89,9 @@ document.getElementById("userSelect").addEventListener("change", function(){
 document.addEventListener('DOMContentLoaded', () => {
     const passInput = document.getElementById('pass');
     const toggleBtn = document.getElementById('togglePass');
+    const passHelp = document.getElementById('passHelp');
 
+    // Show/Hide toggle
     if (passInput && toggleBtn) {
         toggleBtn.addEventListener('click', () => {
             if (passInput.type === 'password') {
@@ -101,5 +103,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Password strength check
+    passInput.addEventListener('input', () => {
+        const val = passInput.value;
+        const strongPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        if (strongPattern.test(val)) {
+            passHelp.textContent = "Slaptažodis stiprus ✅";
+            passHelp.style.color = "green";
+        } else {
+            passHelp.textContent = "Slaptažodis turi būti bent 8 simboliai, su didžiąja, mažąja, skaičiumi ir specialiu simboliu ❌";
+            passHelp.style.color = "red";
+        }
+    });
 });
+/*
+Strength check: Regex ensures the password has:
+
+At least 8 characters
+
+At least 1 lowercase
+
+At least 1 uppercase
+
+At least 1 number
+
+At least 1 special character (!@#$%^&*, etc.)
+
+Shows a small help text in red/green as user types.
+*/
 

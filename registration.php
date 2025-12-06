@@ -52,6 +52,7 @@ include_once 'db.inc.php';
                             Rodyti
                         </button>
                     </div>
+                    <small id="passHelp" class="form-text text-muted"></small>
                 </div>
                 <div class="mb-3">
                     <label for="num" class="form-label">Pažymėjimo numeris</label>
