@@ -6,36 +6,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $loginname = $_POST['loginname'];
     $password = $_POST['password'];
     $role = $_POST['role']; 
-
+    $sql;
     if ($role == "user") {
-        $sql = "SELECT * FROM user WHERE loginname = ?";
+        $sql = "SELECT * FROM users WHERE loginname = ?";
     } elseif ($role == "employee") {
-        $sql = "SELECT * FROM employee WHERE loginname = ?";
+        $sql = "SELECT * FROM employees WHERE loginname = ?";
     } elseif ($role == "admin") {
-        $sql = "SELECT * FROM admin WHERE loginname = ?";
+        $sql = "SELECT * FROM admins WHERE loginname = ?";
     }
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
+    $stmt->bind_param("s", $loginname);
     $stmt->execute();
     $result = $stmt->get_result();
     $account = $result->fetch_assoc();
-
-    if ($account && password_verify($password, $account['pass'])) {
+	var_dump($account);
+var_dump($password);
+    if ($account && $password === $account['pass']) {
         $_SESSION["id"] = $account["id"];
         $_SESSION["username"] = $account["loginname"];
         $_SESSION["role"]= $role;
 
         if ($role == 'admin') {
-            header("Location: ../darbuotojai.php");
+            header("Location: /newFolder/biblioteka-main/darbuotojai.php");
         } elseif ($role == 'employee') {
-            header("Location: ../skaitytojai.php");
+            header("Location: /newFolder/biblioteka-main/skaitytojai.php");
         } else {
-            header("Location: ../user.php");
+            header("Location: /newFolder/biblioteka-main/user.php");
         }
         exit;
 
     } else {
-        header("Location: ../loginPage.php");
+        header("Location: /newFolder/biblioteka-main/loginPage.php");
+	exit;
     }
 
 }

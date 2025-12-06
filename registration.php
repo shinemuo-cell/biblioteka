@@ -48,11 +48,11 @@ include_once 'db.inc.php';
                     <label for="pass" class="form-label">Slaptazodis</label>
                     <input type="text" class="form-control" id="pass" name="pass" required>
                 </div>
-                <!-- <div class="mb-3">
+                <div class="mb-3">
                     <label for="num" class="form-label">Pazymejimo numeris</label>
-                    <input type="number" class="form-control" id="num" required>
-                </div> -->
-                <button type="button" class="btn btn-primary btn-lg" type="submit">Sukurti paskyra</button>
+                    <input name="num" type="number" class="form-control" id="num" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" type="submit">Sukurti paskyra</button>
             </form>
         </main>
         

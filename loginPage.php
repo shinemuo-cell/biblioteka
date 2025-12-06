@@ -27,17 +27,17 @@ include_once 'db.inc.php';
                 <form method="POST" action="login.php">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Prisijungimo vardas</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput">
+                        <input type="text" class="form-control" id="formGroupExampleInput" name="loginname">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Slaptazodis</label>
-                        <input type="password" class="form-control" id="formGroupExampleInput2">
+                        <input type="password" class="form-control" id="formGroupExampleInput2" name="password">
                     </div>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" name="role">
                     <option selected>Vartotojo tipas</option>
-                    <option value="user">Skaitytojas</option>
-                    <option value="employee">Darbuotojas</option>
-                    <option value="admin">Administratorius</option>
+                    <option name="user" value="user">Skaitytojas</option>
+                    <option name="employee" value="employee">Darbuotojas</option>
+                    <option name="admin" value="admin">Administratorius</option>
                     </select>
                     <button type="submit">Prisijungti</button>
                 </form>

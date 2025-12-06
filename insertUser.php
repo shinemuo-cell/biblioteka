@@ -5,13 +5,14 @@ $name = $_POST['name'];
 $surname = $_POST['surname'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
-#$number=$_POST["num"];
+$number=$_POST["num"];
 $loginName = $_POST['loginName'];
 $pass = $_POST["pass"];
 
-$sql = "INSERT INTO users (name, surname, email, phone, loginName, pass)
-         VALUES ('$name', '$surname', '$email', '$phone', "$loginName", "$pass");";
+$stmt = $conn->prepare("INSERT INTO users (name, surname, email, phone, pass, loginname, number) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("sssssss", $name, $surname, $email, $phone, $pass, $loginName, $number);
+$stmt->execute();
 
-mysqli_query($conn, $sql);
-header("Location: ../loginPage.php");
+header("Location: /newFolder/biblioteka-main/loginPage.php");
 exit();
