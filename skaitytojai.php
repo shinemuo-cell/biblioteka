@@ -82,6 +82,7 @@ if ($_SESSION['role'] !== 'admin'&& $_SESSION['role'] !== 'employee') {
                                     echo '<tr><td colspan="7">Knygų nėra</td></tr>';
                                 }
                                 ?>
+                                <button onclick="addBookForUserOpenForm()">Prideti knyga</button>
                             </tbody>
                         </table>
                     </div>

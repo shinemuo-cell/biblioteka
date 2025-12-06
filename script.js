@@ -15,10 +15,10 @@ function addBookCloseForm(){
     document.getElementById("addBook").style.display="none";
 }
 
-function addBookOpenForm(){
+function addBookForUserOpenForm(){
     document.getElementById("userBook").style.display="block";
 }
-function addBookCloseForm(){
+function addBookForUserCloseForm(){
     document.getElementById("userBook").style.display="none";
 }
 	// Funkcijos vartotojo informacijos keitimo langui
