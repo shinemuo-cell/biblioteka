@@ -1,7 +1,7 @@
 <?php
 include_once 'db.inc.php'; 
 session_start();
-if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
+if ($_SESSION['role'] !== 'admin'&& $_SESSION['role'] !== 'employee') {
     die("Neturite prieigos prie šio puslapio!");
 }
 ?>
@@ -33,64 +33,63 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
         </header>
         <main>
             <?php
-                $sql = "SELECT * FROM users";
-                $users = mysqli_query($conn, $sql);
-                $resultCheck = mysqli_num_rows($users);
-                if($resultCheck > 0){?>
-                    <div id="accordion">
-                        <?php while($user = $users->fetch_assoc()): ?>
-                        <div class="card">
-                        <div class="card-header" id="heading<?= $user['id'] ?>">
-                            <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse<?= $user['id'] ?>" aria-expanded="false" aria-controls="collapse<?= $user['id'] ?>">
-                                <p><?= htmlspecialchars($user["name"] . " " . $user["surname"]) ?></p>
-                                <p><?= htmlspecialchars($user["email"])?></p>
-                                <p><?= htmlspecialchars($user["phone"])?></p>
-                                <p><?= htmlspecialchars($user["number"])?></p>
-                            </button>
-                            </h5>
-                        </div>
-                        <div id="collapse<?= $user['id'] ?>" class="collapse" aria-labelledby="heading<?= $user['id'] ?>" data-parent="#accordion">
-                            <div class="card-body">
-                            <table class="table">
-                                <thead>
+            $sql = "SELECT * FROM users";
+            $users = mysqli_query($conn, $sql);
+
+            if (mysqli_num_rows($users) > 0) {
+                while ($user = $users->fetch_assoc()) {
+                    ?>
+                    <div class="user-block mb-4 p-3 border rounded">
+                        <h4><?= htmlspecialchars($user["name"] . " " . $user["surname"]) ?></h4>
+                        <p><strong>Email:</strong> <?= htmlspecialchars($user["email"]) ?></p>
+                        <p><strong>Tel.:</strong> <?= htmlspecialchars($user["phone"]) ?></p>
+                        <p><strong>Nr.:</strong> <?= htmlspecialchars($user["number"]) ?></p>
+                        <table class="table table-striped">
+                            <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Pavadinimas</th>
-                                    <th scope="col">Autorius</th>
-                                    <th scope="col">Leidimo metai</th>
-                                    <th scope="col">ISBN</th>
-                                    <th scope="col">Atidavimo data</th>
+                                    <th>#</th>
+                                    <th>Pavadinimas</th>
+                                    <th>Autorius</th>
+                                    <th>Leidimo metai</th>
+                                    <th>ISBN</th>
+                                    <th>Atidavimo data</th>
+                                    <th>Veiksmas</th>
                                 </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
+                            </thead>
+                            <tbody>
                                 <?php
-                                $books = $mysqli->query("SELECT * FROM taken_books WHERE user_id=" . (int)$user['id']);
-                                if($books->num_rows>0){
-                                $i = 1;
-                                    while($book = $books->fetch_assoc()):
-                                    ?>
+                                $books = mysqli_query($conn, "SELECT * FROM taken_books WHERE user_id=" . (int)$user['id']);
+                                if (mysqli_num_rows($books) > 0) {
+                                    $i = 1;
+                                    while ($book = $books->fetch_assoc()) {
+                                        ?>
                                         <tr>
-                                        <th scope="row"><?= $i++ ?></th>
-                                        <td><?= htmlspecialchars($book['name']) ?></td>
-                                        <td><?= htmlspecialchars($book['author']) ?></td>
-                                        <td><?= htmlspecialchars($book['y']) ?></td>
-                                        <td><?= htmlspecialchars($book['isbn']) ?></td>
-                                        <td><?= htmlspecialchars($book['end_date']) ?></td>
-                                        <td><a href="deteteUserBook.php?id=<?= $user['id'] ?>&book_id=<?= $book['name'] ?>">Grazinta</a></td>
+                                            <td><?= $i++ ?></td>
+                                            <td><?= htmlspecialchars($book['name']) ?></td>
+                                            <td><?= htmlspecialchars($book['author']) ?></td>
+                                            <td><?= htmlspecialchars($book['y']) ?></td>
+                                            <td><?= htmlspecialchars($book['isbn']) ?></td>
+                                            <td><?= htmlspecialchars($book['end_date']) ?></td>
+                                            <td>
+                                                <a href="deleteUserBook.php?id=<?= $user['id'] ?>&book_id=<?= $book['id'] ?>">
+                                                    Grąžinta
+                                                </a>
+                                            </td>
                                         </tr>
-                                    <?php endwhile;
-                                }else{?> <tr><td colspan=6>Knygu nera</td></tr><?php }?>
-                                </tbody>
-                            </table>
-                            </div>
-                        </div>
-                        </div>
-                        <?php endwhile; ?>
+                                        <?php
+                                    }
+                                } else {
+                                    echo '<tr><td colspan="7">Knygų nėra</td></tr>';
+                                }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
-                <?php } else {
-                    echo "<p>Skaitytoju nera</p>";
+                    <?php
                 }
+            } else {
+                echo "<p>Skaitytojų nėra</p>";
+            }
             ?>
             <div class="formStyle" id="userBook">
                 <form action="insertUserBook.php" method="POST">
