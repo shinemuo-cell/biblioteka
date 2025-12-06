@@ -30,7 +30,7 @@ include_once 'db.inc.php';
                         <input type="text" class="form-control" id="formGroupExampleInput" name="loginname">
                     </div>
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Slaptazodis</label>
+                        <label for="formGroupExampleInput2" class="form-label">Slaptažodis</label>
                         <input type="password" class="form-control" id="formGroupExampleInput2" name="password">
                     </div>
                     <select class="form-select" aria-label="Default select example" name="role">
@@ -41,7 +41,7 @@ include_once 'db.inc.php';
                     </select>
                     <button type="submit">Prisijungti</button>
                 </form>
-                <a href="registration.php">Sukurti paskyra</a>
+                <button type="submit" class="btn btn-primary btn-lg"><a href="registration.php">Sukurti paskyrą</a></button>                
             </div>
         </main>
         
