@@ -40,10 +40,10 @@ main{
 header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 40px; /
+    padding: 20px 40px; 
     border-bottom: 1px solid #eee;
 }
-}
+
 .pageLink{
     padding:10px;
 }
@@ -128,3 +128,4 @@ nav {
 }
 .pageLink:hover {
     color: #444; 
+}
