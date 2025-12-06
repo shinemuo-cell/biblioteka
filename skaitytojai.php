@@ -76,7 +76,7 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                                         <td><?= htmlspecialchars($book['author']) ?></td>
                                         <td><?= htmlspecialchars($book['y']) ?></td>
                                         <td><?= htmlspecialchars($book['isbn']) ?></td>
-                                        <td><?= htmlspecialchars($book['final_date']) ?></td>
+                                        <td><?= htmlspecialchars($book['end_date']) ?></td>
                                         <td><a href="deteteUserBook.php?id=<?= $user['id'] ?>&book_id=<?= $book['name'] ?>">Grazinta</a></td>
                                         </tr>
                                     <?php endwhile;
@@ -88,7 +88,7 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                         </div>
                         <?php endwhile; ?>
                     </div>
-                <?php} else {
+                <?php } else {
                     echo "<p>Skaitytoju nera</p>";
                 }
             ?>
