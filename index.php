@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+
 // Prisijungimas prie duomenų bazės jos ner da
 include_once 'db.inc.php'; 
 
@@ -27,6 +31,7 @@ setcookie("name", "smilingCatMeme.jpg", time()+ 300);
         
         <main>
             <h3>Puslapio zemelapis</h3>
+            <p>vas testavimas</p>
             <h3>Duomenys</h3>
         </main>
         
