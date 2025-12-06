@@ -35,9 +35,9 @@ include_once 'db.inc.php';
                     </div>
                     <select class="form-select" aria-label="Default select example" name="role">
                     <option selected>Vartotojo tipas</option>
-                    <option name="user" value="user">Skaitytojas</option>
-                    <option name="employee" value="employee">Darbuotojas</option>
-                    <option name="admin" value="admin">Administratorius</option>
+                    <option value="user">Skaitytojas</option>
+                    <option value="employee">Darbuotojas</option>
+                    <option value="admin">Administratorius</option>
                     </select>
                     <button type="submit">Prisijungti</button>
                 </form>
