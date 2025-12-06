@@ -66,7 +66,7 @@ if ($_SESSION['role'] !== 'admin'|| $_SESSION['role'] !== 'employee') {
                                 <tbody class="table-group-divider">
                                 <?php
                                 $books = $mysqli->query("SELECT * FROM taken_books WHERE user_id=" . (int)$user['id']);
-                                if($books>0){
+                                if($books->num_rows>0){
                                 $i = 1;
                                     while($book = $books->fetch_assoc()):
                                     ?>
