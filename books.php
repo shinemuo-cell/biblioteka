@@ -1,9 +1,7 @@
 <?php
 include_once 'db.inc.php';
 session_start();
-if ($_SESSION['role'] !== 'admin'&& $_SESSION['role'] !== 'employee'&& $_SESSION['role'] !== 'user') {
-    die("Neturite prieigos prie šio puslapio!");
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +38,7 @@ if ($_SESSION['role'] !== 'admin'&& $_SESSION['role'] !== 'employee'&& $_SESSION
             <div class="buttonContainer">
                 <button type="button" onclick="newBookOpenForm()">Pridėti naują knygą</button>
                 <button type="button" onclick="addBookOpenForm()">Padidinti knygos kiekį</button>
-                <a href="bookReport.php" >Atsisiųsti knygų ataskaitą</a>
+		        <a href="bookReport.php" class="btn">Atsisiųsti knygų ataskaitą</a>
             </div>
             <?php endif; ?>
             <div class="container mt-4">

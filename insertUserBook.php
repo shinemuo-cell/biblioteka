@@ -1,25 +1,35 @@
 <?php
 include 'db.inc.php';
 
-if(isset($_POST['give'])) {
+if (isset($_POST['give'])) {
     $user_id = (int)$_POST['user_id'];
     $book_id = (int)$_POST['book_id'];
 
+    // Patikriname ar knyga egzistuoja
     $bookSql = "SELECT * FROM books WHERE id=$book_id LIMIT 1";
     $bookRes = mysqli_query($conn, $bookSql);
     $book = $bookRes->fetch_assoc();
 
-    if($book && $book['quantity'] > 0) {
-        $end_date = date('Y-m-d', strtotime('+30 days'));
+    if ($book && $book['quantity'] > 0) {
+        // Patikriname ar vartotojas jau turi šią knygą
+        $checkSql = "SELECT 1 FROM taken_books WHERE user_id=$user_id AND book_id=$book_id LIMIT 1";
+        $checkRes = mysqli_query($conn, $checkSql);
 
-        $insertSql = "INSERT INTO taken_books (user_id, id, name, author, isbn, y, end_date) 
-                      VALUES ($user_id, $book_id, 
+        if (mysqli_num_rows($checkRes) == 0) {
+            $end_date = date('Y-m-d', strtotime('+30 days'));
+
+            $insertSql = "INSERT INTO taken_books (user_id, book_id, name, author, isbn, y, end_date) 
+                          VALUES (
+                              $user_id, 
+                              $book_id, 
                               '".mysqli_real_escape_string($conn, $book['name'])."', 
-                              '\".mysqli_real_escape_string($conn, $book['author']).\"', 
-                              '\".mysqli_real_escape_string($conn, $book['isbn']).\"', 
-                              '\".mysqli_real_escape_string($conn, $book['y']).\"', 
-                              '$end_date')";
-        mysqli_query($conn, $insertSql);
+                              '".mysqli_real_escape_string($conn, $book['author'])."', 
+                              '".mysqli_real_escape_string($conn, $book['isbn'])."', 
+                              '".mysqli_real_escape_string($conn, $book['y'])."', 
+                              '$end_date'
+                          )";
+            mysqli_query($conn, $insertSql);
+        }
     }
 
     header("Location: skaitytojai.php");
