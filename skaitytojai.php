@@ -71,7 +71,7 @@ if ($_SESSION['role'] !== 'admin'&& $_SESSION['role'] !== 'employee') {
                                             <td><?= htmlspecialchars($book['isbn']) ?></td>
                                             <td><?= htmlspecialchars($book['end_date']) ?></td>
                                             <td>
-                                                <a href="deleteUserBook.php?id=<?= $user['id'] ?>&book_id=<?= $book['id'] ?>">
+                                                <a href="deleteUserBook.php?id=<?= $user['id'] ?>&book_name=<?= $book['name'] ?>">
                                                     Grąžinta
                                                 </a>
                                             </td>
@@ -82,7 +82,7 @@ if ($_SESSION['role'] !== 'admin'&& $_SESSION['role'] !== 'employee') {
                                     echo '<tr><td colspan="7">Knygų nėra</td></tr>';
                                 }
                                 ?>
-				<button onclick="addBookForUserOpenForm()">Prideti knyga</button>
+				                <button onclick="addBookForUserOpenForm()">Prideti knyga</button>
                             </tbody>
                         </table>
                     </div>
