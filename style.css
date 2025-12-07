@@ -129,3 +129,25 @@ nav {
 .pageLink:hover {
     color: #000000; 
 }
+/*#endregion*/
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed; 
+    bottom: 0;
+    width: 100%; 
+    background-color: #f8f9fa; 
+    padding: 10px 0;
+    border-top: 1px solid #eee; 
+    z-index: 1000; 
+}
+
+main {
+    padding-bottom: 60px; 
+    min-height: calc(100vh - 80px); 
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
