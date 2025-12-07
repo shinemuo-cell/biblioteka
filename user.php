@@ -54,7 +54,7 @@ $isduotosKnygos = [
                     <p><strong>Pažymėjimo nr.:</strong> <?php echo $pazymejimoNr; ?></p>
                     
                     <div class="d-flex align-items-end justify-content-end">
-                        <button class="btn btn-secondary" onclick="editUserOpenForm()">Keisti duomenis</button>
+                        <button class="btn-universal" onclick="editUserOpenForm()">Keisti duomenis</button>
                     </div>
                 </div>
 
@@ -100,11 +100,12 @@ $isduotosKnygos = [
                         <input type="tel" id="phone" name="phone" value="<?php echo $telNr; ?>"><br>
                         <label>Pažymėjimo nr.</label><br>
                         <input type="text" id="pazymejimas" name="pazymejimas" value="<?php echo $pazymejimoNr; ?>"><br>
-                        <button type="submit" name="submit" >Išsaugoti</button><br>
+                        
+                        <button type="submit" name="submit" class="btn-universal">Išsaugoti</button><br>
                     </div>
                 </form>
                 <div class="form-buttons-container">
-                    <button onclick="editUserCloseForm()">Uždaryti langą</button>
+                    <button onclick="editUserCloseForm()" class="btn-universal">Uždaryti langą</button>
                 </div>
          
             </div>
