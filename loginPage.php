@@ -39,10 +39,13 @@ include_once 'db.inc.php';
                     <option value="employee">Darbuotojas</option>
                     <option value="admin">Administratorius</option>
                     </select>
-                    <button type="submit">Prisijungti</button>
+                  
+				  <button type="submit" class="login-button">Prisijungti</button>
                 </form>
-                <button type="submit" class="btn btn-primary btn-lg"><a href="registration.php">Sukurti paskyrą</a></button>                
+                
+                <a href="registration.php" class="login-button">Sukurti paskyrą</a>
             </div>
+              
         </main>
         
         <footer>
