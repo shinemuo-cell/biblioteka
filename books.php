@@ -1,7 +1,9 @@
 <?php
 include_once 'db.inc.php';
 session_start();
-
+if ($_SESSION['role'] !== 'admin'&& $_SESSION['role'] !== 'employee'&& $_SESSION['role'] !== 'user') {
+    die("Neturite prieigos prie šio puslapio!");
+}
 ?>
 
 <!DOCTYPE html>
