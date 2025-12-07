@@ -27,16 +27,16 @@ var_dump($password);
         $_SESSION["role"]= $role;
 
         if ($role == 'admin') {
-            header("Location: /newFolder/biblioteka-main/darbuotojai.php");
+            header("Location: darbuotojai.php");
         } elseif ($role == 'employee') {
-            header("Location: /newFolder/biblioteka-main/skaitytojai.php");
+            header("Location: skaitytojai.php");
         } else {
-            header("Location: /newFolder/biblioteka-main/user.php");
+            header("Location: user.php");
         }
         exit;
 
     } else {
-        header("Location: /newFolder/biblioteka-main/loginPage.php");
+        header("Location: loginPage.php");
 	exit;
     }
 
