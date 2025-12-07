@@ -20,9 +20,6 @@ if(isset($_POST['give'])) {
                               '\".mysqli_real_escape_string($conn, $book['y']).\"', 
                               '$end_date')";
         mysqli_query($conn, $insertSql);
-
-        $updateQuantitySql = "UPDATE books SET quantity = quantity - 1 WHERE id = $book_id";
-        mysqli_query($conn, $updateQuantitySql);
     }
 
     header("Location: skaitytojai.php");
