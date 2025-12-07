@@ -31,7 +31,7 @@ setcookie("name", "smilingCatMeme.jpg", time()+ 300);
         <main>
             <h3>Puslapio žemėlapis</h3>
                 <img src="puslapio_schema.png" alt="puslapio schema" >
-            <h3>Duomenys</h3>
+          
         </main>
         
         <footer>
