@@ -40,6 +40,7 @@ if ($_SESSION['role'] !== 'admin'&& $_SESSION['role'] !== 'employee'&& $_SESSION
             <div class="buttonContainer">
                 <button type="button" onclick="newBookOpenForm()">Pridėti naują knygą</button>
                 <button type="button" onclick="addBookOpenForm()">Padidinti knygos kiekį</button>
+                <a href="bookReport.php" >Atsisiųsti knygų ataskaitą</a>
             </div>
             <?php endif; ?>
             <div class="container mt-4">
