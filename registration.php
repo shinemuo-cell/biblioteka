@@ -47,7 +47,8 @@ include_once 'db.inc.php';
                 <div class="mb-3">
                     <label for="pass" class="form-label">Slaptažodis</label>
                     <div style="display: flex; align-items: center;">
-                        <input type="password" class="form-control" id="pass" name="pass" required>
+                        <input type="password" class="form-control" id="pass" name="pass" required
+                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}">
                         <button type="button" id="togglePass" class="btn btn-outline-secondary" style="margin-left: 5px;">
                             Rodyti
                         </button>
@@ -65,6 +66,7 @@ include_once 'db.inc.php';
         <footer>
             Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.
         </footer>
-        <script src="script.js"></script>
+
+        <script src="script.js" defer></script>  <!--pirma dom egzistuoja, tada js veikia-->
     </body>
 </html>
