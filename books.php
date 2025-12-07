@@ -2,6 +2,15 @@
 include_once 'db.inc.php';
 session_start();
 
+// Prieigos tikrinimas
+if ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'employee' && $_SESSION['role'] !== 'user') {
+    die("Neturite prieigos prie šio puslapio!");
+}
+
+// SQL užklausa laisvoms knygoms (kiekis > 0)
+$sql_laisvos = "SELECT * FROM books WHERE quantity > 0 ORDER BY name ASC;";
+$result_laisvos = mysqli_query($conn, $sql_laisvos);
+$resultCheck_laisvos = mysqli_num_rows($result_laisvos);
 ?>
 
 <!DOCTYPE html>
@@ -38,10 +47,11 @@ session_start();
             <div class="buttonContainer">
                 <button type="button" onclick="newBookOpenForm()">Pridėti naują knygą</button>
                 <button type="button" onclick="addBookOpenForm()">Padidinti knygos kiekį</button>
-		        <a href="bookReport.php" class="btn">Atsisiųsti knygų ataskaitą</a>
             </div>
             <?php endif; ?>
+            
             <div class="container mt-4">
+                <h3>Visos Knygos</h3>
                 <table class="table table-striped table-dark">
                     <thead>
                         <tr>
@@ -54,7 +64,6 @@ session_start();
                     </thead>
                     <tbody>
                         <?php
- 
                             $sql = "SELECT * FROM books ORDER BY name ASC;";
                             $result = mysqli_query($conn, $sql);
                             $resultCheck = mysqli_num_rows($result);
@@ -76,6 +85,7 @@ session_start();
                     </tbody>
                 </table>
             </div>
+
             <div class="formStyle" id="newBook">
                 <form action="insertBook.php" method="POST">
                     <div class="formContainer">
@@ -95,6 +105,7 @@ session_start();
                 </form>
                 <button onclick="newBookCloseForm()">Uždaryti</button>
             </div>
+
             <div class="formStyle" id="addBook">
                 <form action="addBook.php" method="POST">
                     <div class="formContainer">
@@ -121,7 +132,40 @@ session_start();
                 </form>
                 <button onclick="addBookCloseForm()">Uždaryti</button>
             </div>
-            </main>
+            
+            <div class="container mt-5">
+                <?php
+                echo "<h2>Nepaimtos Knygos</h2>";
+
+                if ($resultCheck_laisvos > 0) {
+                    echo "<table class='table table-bordered table-hover'>
+                            <thead>
+                                <tr>
+                                    <th>Pavadinimas</th>
+                                    <th>Autorius</th>
+                                    <th>ISBN</th>
+                                    <th>Metai</th>
+                                    <th>Turimas Kiekis</th> 
+                                </tr>
+                            </thead>
+                            <tbody>";
+                    while ($row = mysqli_fetch_assoc($result_laisvos)) {
+                        echo "<tr>
+                                <td>" . htmlspecialchars($row['name']) . "</td>
+                                <td>" . htmlspecialchars($row['author']) . "</td>
+                                <td>" . htmlspecialchars($row['isbn']) . "</td>
+                                <td>" . htmlspecialchars($row['y']) . "</td>
+                                <td>" . htmlspecialchars($row['quantity']) . "</td>
+                              </tr>";
+                    }
+                    echo "</tbody></table>";
+                } else {
+                    echo "<p class='alert alert-warning'>Šiuo metu laisvų knygų nėra.</p>";
+                }
+                ?>
+            </div>
+
+        </main>
         <footer>
             Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.
         </footer>
