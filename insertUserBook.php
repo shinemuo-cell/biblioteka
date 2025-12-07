@@ -15,11 +15,14 @@ if(isset($_POST['give'])) {
         $insertSql = "INSERT INTO taken_books (user_id, id, name, author, isbn, y, end_date) 
                       VALUES ($user_id, $book_id, 
                               '".mysqli_real_escape_string($conn, $book['name'])."', 
-                              '".mysqli_real_escape_string($conn, $book['author'])."', 
-                              '".mysqli_real_escape_string($conn, $book['isbn'])."', 
-                              '".mysqli_real_escape_string($conn, $book['y'])."', 
+                              '\".mysqli_real_escape_string($conn, $book['author']).\"', 
+                              '\".mysqli_real_escape_string($conn, $book['isbn']).\"', 
+                              '\".mysqli_real_escape_string($conn, $book['y']).\"', 
                               '$end_date')";
         mysqli_query($conn, $insertSql);
+
+        $updateQuantitySql = "UPDATE books SET quantity = quantity - 1 WHERE id = $book_id";
+        mysqli_query($conn, $updateQuantitySql);
     }
 
     header("Location: skaitytojai.php");
