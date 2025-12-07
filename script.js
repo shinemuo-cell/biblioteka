@@ -48,33 +48,6 @@ function editEmployeeCloseForm() {
 document.addEventListener("DOMContentLoaded", () => {
 
     // ------------------------------
-    // SAFE USER BOOK SELECT
-    // ------------------------------
-    const userSelect = document.getElementById("userSelect");
-
-    if (userSelect) {
-        userSelect.addEventListener("change", function () {
-            let userId = this.value;
-
-            fetch("getBooks.php?user_id=" + userId)
-                .then(response => response.json())
-                .then(data => {
-                    const bookSelect = document.getElementById("bookSelect");
-                    if (!bookSelect) return;
-
-                    bookSelect.innerHTML = "";
-
-                    data.forEach(book => {
-                        let opt = document.createElement("option");
-                        opt.value = book.id;
-                        opt.textContent = book.title;
-                        bookSelect.appendChild(opt);
-                    });
-                });
-        });
-    }
-
-    // ------------------------------
     // PASSWORD SHOW / HIDE + VALIDATION
     // ------------------------------
     const passInput = document.getElementById("pass");
@@ -127,4 +100,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+});
+
+document.getElementById('userSelect').addEventListener('change', function() {
+    var userId = this.value;
+    var bookSelect = document.getElementById('bookSelect');
+    bookSelect.innerHTML = '<option value="">Pasirinkite knygą</option>';
+
+    if(userId) {
+        fetch('getBooks.php?user_id=' + userId)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(book => {
+                    var opt = document.createElement('option');
+                    opt.value = book.id;
+                    opt.textContent = book.name + ' (' + book.author + ')';
+                    bookSelect.appendChild(opt);
+                });
+            });
+    }
 });
