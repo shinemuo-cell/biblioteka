@@ -155,12 +155,10 @@ main {
 
 .login-button {
     display: inline-block; 
-    
     padding: 8px 15px;
     margin-top: 15px;
-
     border: 1px solid #ccc; 
-    border-radius: 6px; 
+    border-radius: 7px; 
     background-color: #f8f9fa; 
     color: #212529; 
     text-align: center;
@@ -179,9 +177,8 @@ main {
 button, .btn-universal {
     display: inline-block;
     padding: 8px 15px;
-    margin-top: 15px;
     border: 1px solid #ccc;
-    border-radius: 50px;
+    border-radius: 7px;
     background-color: #f8f9fa; 
     color: #212529; 
     text-align: center;
@@ -190,10 +187,16 @@ button, .btn-universal {
     font-size: 1rem;
     line-height: 1.5;
     transition: background-color 0.15s ease-in-out;
-    width: auto; 
+    width: auto;
 }
 
 button:hover, .btn-universal:hover {
     background-color: #e2e6ea;
     border-color: #dae0e5;
+}
+
+#passHelp {
+    display: block;
+    max-width: 280px;
+    word-wrap: break-word;
 }

@@ -47,17 +47,12 @@ function editEmployeeCloseForm() {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ------------------------------
-    // PASSWORD SHOW / HIDE + VALIDATION
-    // ------------------------------
     const passInput = document.getElementById("pass");
     const toggleBtn = document.getElementById("togglePass");
     const passHelp = document.getElementById("passHelp");
     const form = passInput?.closest("form");
 
     if (passInput && toggleBtn && passHelp && form) {
-
-        // SHOW / HIDE
         toggleBtn.addEventListener("click", () => {
             if (passInput.type === "password") {
                 passInput.type = "text";
@@ -67,8 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 toggleBtn.textContent = "Rodyti";
             }
         });
-
-        // LIVE WEAK/STRENGTH INDICATOR (YOU WERE MISSING THIS)
         passInput.addEventListener("input", () => {
             const val = passInput.value;
             const strongPattern =
@@ -76,15 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (strongPattern.test(val)) {
                 passHelp.textContent = "Slaptažodis stiprus";
-                // passHelp.style.color = "green";
             } else {
                 passHelp.textContent =
-                    "Bent 8 simboliai, didžioji, mažoji, skaičius ir specialus simbolis";
-                passHelp.style.color = "red";
+                    "Slaptažodį turi sudaryti bent 8 simboliai (tarp jų didžioji, mažoji raidės, skaičius ir specialusis simbolis)";
             }
         });
 
-        // BLOCK FORM SUBMIT IF WEAK
         form.addEventListener("submit", function (e) {
             const val = passInput.value;
             const strongPattern =
@@ -94,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 e.preventDefault();
                 passHelp.textContent =
                     "Negalima registruotis su silpnu slaptažodžiu!";
-                passHelp.style.color = "red";
                 passInput.focus();
             }
         });

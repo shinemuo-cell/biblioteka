@@ -38,7 +38,7 @@ include_once 'db.inc.php';
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Tel. numeris</label>
-                    <input type="number" class="form-control" id="phone" name="phone" pattern="\+3706[0-9]{7}" placeholder="+37060000000" required>
+                    <input type="tel" class="form-control" id="phone" name="phone" pattern="\+3706[0-9]{7}" placeholder="+37060000000" required>
                 </div>
                 <div class="mb-3">
                     <label for="loginName" class="form-label">Prisijungimo vardas</label>
@@ -49,7 +49,7 @@ include_once 'db.inc.php';
                     <div style="display: flex; align-items: center;">
                         <input type="password" class="form-control" id="pass" name="pass" required
                         pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}">
-                        <button type="button" id="togglePass" class="btn btn-outline-secondary" style="margin-left: 5px;">
+                        <button type="button" id="togglePass" class="btn-universal" style="margin-left: 5px;">
                             Rodyti
                         </button>
                     </div>
@@ -59,7 +59,7 @@ include_once 'db.inc.php';
                     <label for="num" class="form-label">Pažymėjimo numeris</label>
                     <input name="num" type="number" class="form-control" id="num" required>
                 </div>
-                <button type="submit" >Sukurti paskyrą</button>
+                <button type="submit" class="btn-universal">Sukurti paskyrą</button>
             </form>
         </main>
         
