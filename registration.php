@@ -59,7 +59,7 @@ include_once 'db.inc.php';
                     <label for="num" class="form-label">Pažymėjimo numeris</label>
                     <input name="num" type="number" class="form-control" id="num" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg" type="submit">Sukurti paskyrą</button>
+                <button type="submit" >Sukurti paskyrą</button>
             </form>
         </main>
         
@@ -67,6 +67,6 @@ include_once 'db.inc.php';
             Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.
         </footer>
 
-        <script src="script.js" defer></script>  <!--pirma dom egzistuoja, tada js veikia-->
+        <script src="script.js" defer></script>  
     </body>
 </html>
