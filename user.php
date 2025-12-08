@@ -1,28 +1,53 @@
 <?php
-// Prisijungimas prie duomenų baz
 include_once 'db.inc.php'; 
 session_start();
-if ( $_SESSION['role'] !== 'user') {
+
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'user') {
     die("Neturite prieigos prie šio puslapio!");
 }
 
-// 1. Pavyzdiniai duomenys (is db bus kai bus db)
-$vardas = "Vardas";
-$pavarde = "Pavardė";
-$epastas = "vardas.pavarde@gmail.com";
-$telNr = "+37000000000";
-$pazymejimoNr = "0000000000";
+$userId = $_SESSION['id'];
 
-// 2. Pavyzdiniai Isduotų Knygų Duomenys (is db kai bus)
-$isduotosKnygos = [
-    ['Pavadinimas1', 'Autorius1', '1', '2026-01-10'],
-    ['Pavadinimas2', 'Autorius2', '2', '2026-02-15'],
-    ['Pavadinimas3', 'Autorius3', '3', '2026-01-28'],
-    // Pridėta daugiau eilučių, kad atspindėtų pavyzdį nuotraukoje:
-    ['Pavadinimas4', 'Autorius4', '4', '2026-03-01'],
-    ['Pavadinimas5', 'Autorius5', '5', '2026-03-05'],
-    ['Pavadinimas6', 'Autorius6', '6', '2026-03-10'],
-];
+$sql_user = "SELECT name, surname, email, phone, number FROM users WHERE id = ?";
+$stmt_user = $conn->prepare($sql_user);
+$stmt_user->bind_param("i", $userId);
+$stmt_user->execute();
+$result_user = $stmt_user->get_result();
+
+if ($userRow = $result_user->fetch_assoc()) {
+
+    $vardas = htmlspecialchars($userRow['name']);
+    $pavarde = htmlspecialchars($userRow['surname']);
+    $epastas = htmlspecialchars($userRow['email']);
+    $telNr = htmlspecialchars($userRow['phone']);
+    $pazymejimoNr = htmlspecialchars($userRow['number']);
+} else {
+    die("Vartotojo duomenys nerasti.");
+}
+$stmt_user->close();
+
+$isduotosKnygos = []; 
+
+
+$sql_taken_books = "SELECT name, author, isbn, end_date FROM taken_books WHERE user_id = ?;";
+$stmt = $conn->prepare($sql_taken_books);
+
+if ($stmt) {
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result_taken_books = $stmt->get_result();
+
+    while ($row = $result_taken_books->fetch_assoc()) {
+        $isduotosKnygos[] = [
+            $row['name'], 
+            $row['author'], 
+            $row['isbn'],     
+            $row['end_date']
+        ];
+    }
+    $stmt->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -71,46 +96,50 @@ $isduotosKnygos = [
                     </thead>
                     <tbody>
                         <?php
-                        foreach ($isduotosKnygos as $knyga) {
-                            echo "<tr>";
-                            echo "<td>" . $knyga[0] . "</td>";
-                            echo "<td>" . $knyga[1] . "</td>";
-                            echo "<td>" . $knyga[2] . "</td>";
-                            echo "<td>" . $knyga[3] . "</td>";
-                            echo "</tr>";
+                        if (empty($isduotosKnygos)) {
+                            echo "<tr><td colspan='4' class='text-center'>Jūs neturite paimtų knygų.</td></tr>";
+                        } else {
+                            foreach ($isduotosKnygos as $knyga) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($knyga[0]) . "</td>";
+                                echo "<td>" . htmlspecialchars($knyga[1]) . "</td>";
+                                echo "<td>" . htmlspecialchars($knyga[2]) . "</td>"; // Čia dabar rodomas ISBN
+                                echo "<td>" . htmlspecialchars($knyga[3]) . "</td>";
+                                echo "</tr>";
+                            }
                         }
                         ?>
                     </tbody>
                 </table>
                 
                 <div class="text-center mt-4">
-                    <a href="#" class="text-danger" style="color: #f7a5a5 !important;">Panaikinti paskyrą</a>
+                     <a href="#" class="text-danger" style="color: #f7a5a5 !important;" onclick="alert('Susisiekite su administratoriumi dėl paskyros trynimo.'); return false;">Panaikinti paskyrą</a>
                 </div>
-				<div class="formStyle" id="editUser">
-                <form action="updateUser.php" method="POST">
-                    <div class="formContent">
-                        <h3>Keisti duomenis</h3>
-                        <label>Vardas</label><br>
-                        <input type="text" id="name" name="name" value="<?php echo $vardas; ?>"><br>
-                        <label>Pavardė</label><br>
-                        <input type="text" id="surname" name="surname" value="<?php echo $pavarde; ?>"><br>
-                        <label>E. paštas</label><br>
-                        <input type="email" id="email" name="email" value="<?php echo $epastas; ?>"><br>
-                        <label>Tel. nr.</label><br>
-                        <input type="tel" id="phone" name="phone" value="<?php echo $telNr; ?>"><br>
-                        <label>Pažymėjimo nr.</label><br>
-                        <input type="text" id="pazymejimas" name="pazymejimas" value="<?php echo $pazymejimoNr; ?>"><br>
-                        
-                        <button type="submit" name="submit" class="btn-universal">Išsaugoti</button><br>
+
+                <div class="formStyle" id="editUser" style="display:none;"> <form action="updateUser.php" method="POST">
+                        <div class="formContent">
+                            <h3>Keisti duomenis</h3>
+                            <label>Vardas</label><br>
+                            <input type="text" id="name" name="name" value="<?php echo $vardas; ?>"><br>
+                            <label>Pavardė</label><br>
+                            <input type="text" id="surname" name="surname" value="<?php echo $pavarde; ?>"><br>
+                            <label>E. paštas</label><br>
+                            <input type="email" id="email" name="email" value="<?php echo $epastas; ?>"><br>
+                            <label>Tel. nr.</label><br>
+                            <input type="tel" id="phone" name="phone" value="<?php echo $telNr; ?>"><br>
+                            <label>Pažymėjimo nr.</label><br>
+                            <input type="text" id="pazymejimas" name="pazymejimas" value="<?php echo $pazymejimoNr; ?>"><br>
+                            
+                            <button type="submit" name="submit" class="btn-universal">Išsaugoti</button><br>
+                        </div>
+                    </form>
+                    <div class="form-buttons-container">
+                        <button onclick="editUserCloseForm()" class="btn-universal">Uždaryti langą</button>
                     </div>
-                </form>
-                <div class="form-buttons-container">
-                    <button onclick="editUserCloseForm()" class="btn-universal">Uždaryti langą</button>
                 </div>
-         
-            </div>
                 
-            </div> </main>
+            </div> 
+        </main>
         
         <footer>
             Kaunas, 2025. © Kristina DB, Viltė I., Vasarė M.
